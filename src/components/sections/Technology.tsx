@@ -50,7 +50,11 @@ export default function Technology() {
     const f = fit.current;
     if (!b || !f) return;
     const ro = new ResizeObserver(() => {
-      const s = Math.min(1.05, b.clientHeight / (H + 60), b.clientWidth / (W + 140));
+      // Mobile has no side chips, so the phone can take nearly the full stage.
+      const mobile = window.matchMedia("(max-width: 767px)").matches;
+      const s = mobile
+        ? Math.min(1.25, b.clientHeight / H, b.clientWidth / (W + 16))
+        : Math.min(1.05, b.clientHeight / (H + 60), b.clientWidth / (W + 140));
       f.style.setProperty("--fit", String(Math.max(0.45, s)));
     });
     ro.observe(b);
@@ -141,7 +145,7 @@ export default function Technology() {
       <div aria-hidden className="pointer-events-none absolute right-[8%] top-1/2 h-[520px] w-[520px] -translate-y-1/2 rounded-full bg-red/[0.09] blur-[140px]" />
       <div aria-hidden className="dot-grid pointer-events-none absolute inset-0 opacity-40 [mask-image:radial-gradient(ellipse_50%_60%_at_70%_50%,#000,transparent)]" />
 
-      <div className="relative mx-auto grid h-full w-full max-w-[1200px] grid-rows-[auto_1fr] gap-4 px-4 pb-20 pt-20 sm:px-8 md:grid-cols-[1fr_1.05fr] md:grid-rows-1 md:items-center md:gap-12 md:py-0">
+      <div className="relative mx-auto grid h-full w-full max-w-[1200px] grid-rows-[auto_1fr] gap-2 px-4 pb-10 pt-[72px] sm:px-8 md:grid-cols-[1fr_1.05fr] md:grid-rows-1 md:items-center md:gap-12 md:py-0">
         {/* Copy + stage list */}
         <div>
           <Index n="06" label="Technology, when needed" />
@@ -189,7 +193,7 @@ export default function Technology() {
           {CHIPS.map((c, i) => (
             <div
               key={i}
-              className={`tchip tchip-${c.s} glass absolute z-10 rounded-lg px-3 py-2 ${c.side === "l" ? "left-0 md:left-[2%]" : "right-0 md:right-[2%]"}`}
+              className={`tchip tchip-${c.s} glass absolute z-10 hidden rounded-lg px-3 py-2 md:block ${c.side === "l" ? "left-0 md:left-[2%]" : "right-0 md:right-[2%]"}`}
               style={{ top: c.top }}
             >
               <p className={`hud text-[9px] ${c.s === 3 ? "text-cyan" : "text-red"}`}>{c.k}</p>
