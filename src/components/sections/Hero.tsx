@@ -165,15 +165,18 @@ export default function Hero() {
           // ── speak: the red closes into a dot, then walks the line ──
           .to(orb.current, { ...at(0), scale: 1, duration: 0.1, ease: "expo.out" }, 0.585);
 
-        const step = 0.042;
+        // Words rise in on compositor-only properties (opacity + translate on a
+        // persistent 3D layer). No filters: scrubbing blur on large text forces a
+        // full re-raster every frame and flickers as layers are created/dropped.
+        const step = 0.04;
         words.forEach((w, k) => {
-          const t0 = 0.69 + k * step;
+          const t0 = 0.68 + k * step;
           tl.fromTo(
             w,
-            { opacity: 0, yPercent: 35, filter: "blur(14px)" },
-            { opacity: 1, yPercent: 0, filter: "blur(0px)", duration: step * 1.3, ease: "power3.out" },
+            { autoAlpha: 0, yPercent: 22, force3D: true },
+            { autoAlpha: 1, yPercent: 0, force3D: true, duration: step * 1.9, ease: "power2.out" },
             t0,
-          ).to(orb.current, { ...at(k + 1), duration: step * 0.9, ease: "power2.inOut" }, t0);
+          ).to(orb.current, { ...at(k + 1), duration: step * 0.95, ease: "power2.inOut" }, t0);
         });
         // breathing room at the end so the line can be read before release
         tl.to({}, { duration: 0.04 }, 0.96);
@@ -255,7 +258,9 @@ export default function Hero() {
             {line.map((word, wi) => (
               <span key={word}>
                 <span className="w inline-block">
-                  <span className="wi inline-block opacity-0">{word}</span>
+                  <span className="wi inline-block opacity-0 [backface-visibility:hidden] [will-change:transform,opacity]">
+                    {word}
+                  </span>
                 </span>
                 {wi < line.length - 1 && " "}
               </span>
