@@ -10,7 +10,6 @@ import Creative from "@/components/sections/Creative";
 import Technology from "@/components/sections/Technology";
 import Process from "@/components/sections/Process";
 import Cases from "@/components/sections/Cases";
-import Why from "@/components/sections/Why";
 import Assessment from "@/components/sections/Assessment";
 import Contact from "@/components/sections/Contact";
 
@@ -31,7 +30,6 @@ export default function HomePage() {
         <Technology />
         <Process />
         <Cases />
-        <Why />
         <Assessment />
         <Contact />
       </main>

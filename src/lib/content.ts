@@ -178,16 +178,14 @@ export const WORK = [
   { src: "/clients/your-perfect-stitches.png", client: "Your Perfect Stitches", kind: "E-commerce" },
 ];
 
-export type CaseVisual = "car" | "globe" | "leaf" | "tooth" | "cycle" | "pulse";
-
 export const CASES: {
   client: string;
   sector: string;
   focus: string;
   line: string;
   facts?: string[];
-  image?: string;
-  visual: CaseVisual;
+  /** Project image (portrait, 4:5). */
+  image: string;
   implementation?: boolean;
 }[] = [
   {
@@ -197,7 +195,6 @@ export const CASES: {
     line: "A pitch for newer models and the growing electric lineup in Chennai.",
     facts: ["Personality", "Sustainability", "Safety", "Lifestyle fit"],
     image: "/clients/volvo-tamil-nadu.png",
-    visual: "car",
   },
   {
     client: "Altek Beissel Needles",
@@ -206,21 +203,20 @@ export const CASES: {
     line: "A global social strategy for industrial customers.",
     facts: ["1,000+ needle types", "155 checks per needle", "44+ countries"],
     image: "/clients/altek-beissel-needles.png",
-    visual: "globe",
   },
   {
     client: "Universal Organics",
     sector: "Agriculture",
-    focus: "E-commerce design · SEO · Social",
+    focus: "E-commerce · SEO · Social",
     line: "A product showcase for a worldwide exporter of bio-organic fertilisers and natural oils.",
-    visual: "leaf",
+    image: "/clients/universalorganics.jpg",
   },
   {
     client: "Dentkin",
     sector: "Dental healthcare",
     focus: "Cloud web application",
     line: "Connecting dental professionals, labs and patients in real time.",
-    visual: "tooth",
+    image: "/clients/dentkin.jpg",
     implementation: true,
   },
   {
@@ -228,7 +224,7 @@ export const CASES: {
     sector: "Women's healthcare",
     focus: "Mobile & web app",
     line: "Cycle, mood, sleep and nutrition tracking with expert content.",
-    visual: "cycle",
+    image: "/clients/periodpalbylaiqa.jpg",
     implementation: true,
   },
   {
@@ -237,7 +233,6 @@ export const CASES: {
     focus: "Well-being platform",
     line: "Personalised coaching, counselling and daily exercises.",
     image: "/clients/the-happiness-project.png",
-    visual: "pulse",
     implementation: true,
   },
 ];

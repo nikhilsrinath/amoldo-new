@@ -71,7 +71,7 @@ export default function Contact() {
       <div className="relative mx-auto max-w-[1300px] px-4 pb-16 pt-10 sm:px-8 md:pt-16">
         <div className="grid gap-14 md:grid-cols-2 md:gap-20">
           <div className="min-w-0">
-            <Index n="11" label="Contact" />
+            <Index n="10" label="Contact" />
             <h2 id="contact-title" className="display mt-5 text-[clamp(2.2rem,4.6vw,4.4rem)]">
               Let&apos;s build something <span className="text-red">bigger, together.</span>
             </h2>
