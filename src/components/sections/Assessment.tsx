@@ -137,7 +137,7 @@ export default function Assessment() {
   );
 
   return (
-    <section id="assessment" ref={root} aria-labelledby="assess-title" className="relative h-[100svh] min-h-[620px] overflow-hidden bg-bg">
+    <section id="assessment" data-theme="dark" ref={root} aria-labelledby="assess-title" className="relative h-[100svh] min-h-[620px] overflow-hidden">
       <div aria-hidden className="pointer-events-none absolute left-1/2 top-[42%] h-[60vmin] w-[90vmin] -translate-x-1/2 -translate-y-1/2 rounded-full bg-red/[0.10] blur-[140px]" />
 
       <div className="relative mx-auto flex h-full max-w-[1200px] flex-col px-4 pb-6 pt-20 sm:px-8 md:pb-8 md:pt-24">

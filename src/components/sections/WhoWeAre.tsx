@@ -55,7 +55,7 @@ export default function WhoWeAre() {
   );
 
   return (
-    <section id="about" ref={root} aria-labelledby="about-title" className="relative overflow-hidden pb-16 pt-28 md:pb-20 md:pt-44">
+    <section id="about" data-theme="light" ref={root} aria-labelledby="about-title" className="relative overflow-hidden pb-16 pt-28 md:pb-20 md:pt-44">
       <div aria-hidden data-speed="0.6" className="dot-grid absolute inset-0 opacity-60" />
       <div className="relative mx-auto max-w-[1400px] px-4 sm:px-8">
         <Index n="02" label="Who we are" />

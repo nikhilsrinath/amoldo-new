@@ -179,12 +179,12 @@ export default function Creative() {
   const total = CREATIVES.length;
 
   return (
-    <section ref={root} id="creative" aria-labelledby="creative-title" className="relative overflow-hidden py-24 md:py-36">
+    <section ref={root} id="creative" data-theme="light" aria-labelledby="creative-title" className="relative overflow-hidden py-24 md:py-36">
       {/* Background band */}
       <div aria-hidden className="pointer-events-none absolute inset-x-0 top-10 select-none overflow-hidden md:top-16">
         <p
           className="cr-marquee display whitespace-nowrap text-[clamp(5rem,15vw,15rem)] leading-none text-transparent"
-          style={{ WebkitTextStroke: "1px rgba(255,255,255,0.07)" }}
+          style={{ WebkitTextStroke: "1px color-mix(in oklab, var(--text) 9%, transparent)" }}
         >
           Brand · Campaign · Social · Film · Poster · Launch · Brand · Campaign ·
         </p>
@@ -272,7 +272,7 @@ export default function Creative() {
 
                     {/* Caption: always on touch screens; on hover/focus where a pointer can hover,
                         so the client's artwork (logos, CTAs) stays unobstructed. */}
-                    <div className="pointer-events-none absolute inset-0 z-10 transition-opacity duration-500 [@media(hover:hover)]:opacity-0 [@media(hover:hover)]:group-hover:opacity-100 [@media(hover:hover)]:group-focus-within:opacity-100">
+                    <div data-theme="dark" className="pointer-events-none absolute inset-0 z-10 transition-opacity duration-500 [@media(hover:hover)]:opacity-0 [@media(hover:hover)]:group-hover:opacity-100 [@media(hover:hover)]:group-focus-within:opacity-100">
                       <div aria-hidden className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-black/60 to-transparent" />
                       <div className="cr-chip absolute bottom-3 left-3 flex items-center gap-2.5 rounded-full border border-white/10 bg-black/65 py-1.5 pl-1.5 pr-3.5 backdrop-blur-md sm:bottom-4 sm:left-4">
                         <span className="hud grid h-6 min-w-6 place-items-center rounded-full bg-red px-1.5 !tracking-normal text-white">

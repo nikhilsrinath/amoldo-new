@@ -17,14 +17,19 @@ export default function Nav() {
 
   return (
     <header
+      data-theme-follow
       className={`site-header fixed inset-x-0 top-0 z-50 transition-[background,backdrop-filter,border-color,opacity,transform] duration-500 ${
         scrolled ? "border-b border-white/5 bg-bg/70 backdrop-blur-xl" : "border-b border-transparent"
       }`}
     >
       <nav aria-label="Main" className="mx-auto flex h-16 max-w-[1400px] items-center justify-between px-4 sm:h-20 sm:px-8 lg:grid lg:grid-cols-[1fr_auto_1fr]">
         <a href="#top" aria-label="Red Ant Media — home" className="shrink-0 justify-self-start">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/brand/redant-logo-light.svg" alt="Red Ant Media" width={909} height={333} className="h-8 w-auto sm:h-10" />
+          <span className="logo-swap">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="/brand/redant-logo-light.svg" alt="Red Ant Media" width={909} height={333} className="logo-on-dark h-8 w-auto sm:h-10" />
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="/brand/redant-logo-dark.svg" alt="" aria-hidden width={909} height={333} className="logo-on-light h-8 w-auto sm:h-10" />
+          </span>
         </a>
 
         <ul className="hidden items-center gap-8 lg:flex">

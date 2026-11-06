@@ -51,7 +51,7 @@ export default function Contact() {
   }
 
   return (
-    <section id="contact" aria-labelledby="contact-title" className="relative">
+    <section id="contact" data-theme="dark" aria-labelledby="contact-title" className="relative">
       {/* Finale: the colony returns */}
       <div ref={scene} className="relative h-svh min-h-[560px] overflow-hidden">
         <div aria-hidden className="fin-grid grid-floor opacity-20" />

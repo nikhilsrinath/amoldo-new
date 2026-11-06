@@ -199,8 +199,9 @@ export default function Hero() {
       id="top"
       ref={root}
       data-phase="idle"
+      data-theme="dark"
       aria-labelledby="hero-title"
-      className="hero relative h-svh min-h-[560px] overflow-hidden bg-bg"
+      className="hero relative h-svh min-h-[560px] overflow-hidden"
     >
       {/* bloom behind the assembled logo */}
       <div

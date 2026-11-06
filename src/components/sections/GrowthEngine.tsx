@@ -123,13 +123,14 @@ export default function GrowthEngine() {
       id="growth"
       ref={root}
       aria-labelledby="growth-title"
-      className="relative h-svh min-h-[520px] overflow-hidden bg-bg"
+      data-theme="dark"
+      className="relative h-svh min-h-[520px] overflow-hidden"
     >
       <canvas ref={canvas} aria-hidden className="absolute inset-0 h-full w-full" />
       {/* legibility veil: left on desktop, bottom on mobile */}
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-0 bg-[linear-gradient(0deg,var(--bg)_30%,rgba(7,7,10,0.85)_45%,transparent_62%)] md:bg-[linear-gradient(90deg,var(--bg)_0%,rgba(7,7,10,0.88)_26%,transparent_50%)]"
+        className="pointer-events-none absolute inset-0 bg-[linear-gradient(0deg,var(--page-bg)_30%,color-mix(in_oklab,var(--page-bg)_85%,transparent)_45%,transparent_62%)] md:bg-[linear-gradient(90deg,var(--page-bg)_0%,color-mix(in_oklab,var(--page-bg)_88%,transparent)_26%,transparent_50%)]"
       />
 
       <h2 id="growth-title" className="sr-only">

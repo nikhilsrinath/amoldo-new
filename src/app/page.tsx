@@ -1,6 +1,7 @@
 import SmoothScroll from "@/components/shell/SmoothScroll";
 import Nav from "@/components/shell/Nav";
 import MobileCTA from "@/components/shell/MobileCTA";
+import ThemeFlow from "@/components/shell/ThemeFlow";
 import { BookingProvider } from "@/components/shell/Booking";
 import Hero from "@/components/sections/Hero";
 import WhoWeAre from "@/components/sections/WhoWeAre";
@@ -33,6 +34,7 @@ export default function HomePage() {
         <Assessment />
         <Contact />
       </main>
+      <ThemeFlow />
       <MobileCTA />
     </BookingProvider>
   );

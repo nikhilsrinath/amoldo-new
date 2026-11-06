@@ -53,19 +53,19 @@ function ProcessMap({ L, variant }: { L: Layout; variant: "d" | "m" }) {
             <feGaussianBlur stdDeviation="4" />
           </filter>
         </defs>
-        <path d={L.path} fill="none" stroke="#ffffff" strokeOpacity="0.08" strokeWidth="2" />
+        <path d={L.path} fill="none" style={{ stroke: "var(--text)" }} strokeOpacity="0.1" strokeWidth="2" />
         <path d={L.path} fill="none" stroke="#ff2d2d" strokeOpacity="0.25" strokeWidth="1" strokeDasharray="2 8" />
         <path className="p-lit" d={L.path} fill="none" stroke="#ff2d2d" strokeWidth="2" />
         <path className="p-lit" d={L.path} fill="none" stroke="#ff2d2d" strokeWidth="6" opacity="0.5" filter={`url(#glow-${variant})`} />
-        <path className="p-loop" d={L.loop} fill="none" stroke="#4de1ff" strokeWidth="1.5" strokeDasharray="5 6" opacity="0" />
-        <path className="p-loop-head" d={L.loopHead} fill="none" stroke="#4de1ff" strokeWidth="1.5" opacity="0" />
+        <path className="p-loop" d={L.loop} fill="none" style={{ stroke: "var(--cyan)" }} strokeWidth="1.5" strokeDasharray="5 6" opacity="0" />
+        <path className="p-loop-head" d={L.loopHead} fill="none" style={{ stroke: "var(--cyan)" }} strokeWidth="1.5" opacity="0" />
 
         {L.nodes.map(([x, y], i) => (
           <g key={i} transform={`translate(${x} ${y})`}>
             <g className="p-node">
-              <circle r="34" fill="#0e0e14" stroke="#ffffff" strokeOpacity="0.15" />
+              <circle r="34" style={{ fill: "var(--bg-2)", stroke: "var(--text)" }} strokeOpacity="0.14" />
               <circle className="p-ring" r="34" fill="none" stroke="#ff2d2d" strokeWidth="2" opacity="0" />
-              <g transform="translate(-14 -14)" className="p-icon" color="#8a8a99">
+              <g transform="translate(-14 -14)" className="p-icon" style={{ color: "var(--muted)" }}>
                 <LineIcon name={PROCESS[i].icon} size={28} />
               </g>
             </g>
@@ -174,7 +174,7 @@ export default function Process() {
   );
 
   return (
-    <section id="process" ref={root} aria-labelledby="process-title" className="relative flex h-svh min-h-[600px] flex-col overflow-hidden">
+    <section id="process" data-theme="light" ref={root} aria-labelledby="process-title" className="relative flex h-svh min-h-[600px] flex-col overflow-hidden">
       <div className="relative mx-auto w-full max-w-[1400px] px-4 pt-20 sm:px-8 md:pt-28">
         <Index n="07" label="How we work" />
         <h2 id="process-title" className="display mt-3 text-[clamp(1.8rem,4vw,3.6rem)] md:mt-4">

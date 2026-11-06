@@ -140,6 +140,7 @@ export default function Technology() {
       id="technology"
       ref={root}
       aria-labelledby="tech-title"
+      data-theme="dark"
       className="relative flex h-[100svh] min-h-[560px] items-center overflow-hidden"
     >
       <div aria-hidden className="pointer-events-none absolute right-[8%] top-1/2 h-[520px] w-[520px] -translate-y-1/2 rounded-full bg-red/[0.09] blur-[140px]" />

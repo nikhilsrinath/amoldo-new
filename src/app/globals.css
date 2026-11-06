@@ -1,6 +1,21 @@
 @import "tailwindcss";
 
+/*
+ * Two themes, one set of tokens. Sections opt in with data-theme="dark|light";
+ * everything inside reads the same variables, so components never branch.
+ * Light is a cool porcelain picked to sit opposite the blue-black ink, so the
+ * brand red reads equally hot on both.
+ */
 :root {
+  --ink: #07070a;
+  --porcelain: #ecedf1;
+  /* 0 = dark, 1 = light; scrubbed by ThemeFlow as sections change */
+  --m: 0;
+  --page-bg: color-mix(in oklab, var(--ink), var(--porcelain) calc(var(--m) * 100%));
+}
+
+:root,
+[data-theme="dark"] {
   --bg: #07070a;
   --bg-2: #0e0e14;
   --red: #ff2d2d;
@@ -10,6 +25,32 @@
   --text: #f2f2f5;
   --muted: #8a8a99;
   --line: rgba(255, 255, 255, 0.08);
+  --dot: rgba(255, 255, 255, 0.09);
+  --glass-bg: linear-gradient(150deg, rgba(22, 22, 32, 0.66), rgba(10, 10, 16, 0.78));
+  --glass-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05), 0 24px 60px -20px rgba(0, 0, 0, 0.7);
+  /* Tailwind's white/* overlays (hairlines, washes) follow the theme's ink */
+  --color-white: #fff;
+}
+
+[data-theme="light"] {
+  --bg: #ecedf1;
+  --bg-2: #f8f8fa;
+  --red: #e8192e;
+  --red-glow: #ff3b3b;
+  --red-deep: #b3001b;
+  --cyan: #077d9c;
+  --text: #0c0c12;
+  --muted: #565665;
+  --line: rgba(12, 12, 18, 0.1);
+  --dot: rgba(12, 12, 18, 0.12);
+  --glass-bg: linear-gradient(150deg, rgba(255, 255, 255, 0.94), rgba(255, 255, 255, 0.66));
+  --glass-shadow:
+    inset 0 1px 0 #fff, 0 1px 2px rgba(18, 18, 36, 0.05), 0 28px 50px -30px rgba(18, 18, 40, 0.32);
+  --color-white: #0c0c12;
+}
+
+[data-theme] {
+  color: var(--text);
 }
 
 @theme inline {
@@ -22,18 +63,22 @@
   --color-text: var(--text);
   --color-muted: var(--muted);
   --color-line: var(--line);
+  --color-page: var(--page-bg);
   --font-display: var(--font-plex), ui-monospace, monospace;
   --font-sans: var(--font-inter), system-ui, sans-serif;
   --font-mono: var(--font-plex), ui-monospace, monospace;
 }
 
 html {
-  background: var(--bg);
+  background: var(--page-bg);
   color-scheme: dark;
+}
+html[data-page="light"] {
+  color-scheme: light;
 }
 
 body {
-  background: var(--bg);
+  background: var(--page-bg);
   color: var(--text);
   font-family: var(--font-sans);
   overflow-x: clip;
@@ -83,13 +128,34 @@ html.lenis body {
     line-height: 1.4;
   }
 
+  /* Ink fill: muted type that fills left to right when its row is active (Services) */
+  .ink {
+    background-image: linear-gradient(90deg, var(--text) 0 50%, color-mix(in oklab, var(--text) 22%, transparent) 50% 100%);
+    background-size: 200.5% 100%;
+    background-position: 100% 0;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    -webkit-box-decoration-break: clone;
+    box-decoration-break: clone;
+    transition: background-position 1.1s cubic-bezier(0.65, 0, 0.35, 1);
+  }
+  .is-active .ink {
+    background-position: 0 0;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .ink {
+      transition: none;
+    }
+  }
+
   /* ---------- Surfaces ---------- */
   .glass {
-    background: linear-gradient(150deg, rgba(22, 22, 32, 0.66), rgba(10, 10, 16, 0.78));
+    background: var(--glass-bg);
     backdrop-filter: blur(14px);
     -webkit-backdrop-filter: blur(14px);
     border: 1px solid var(--line);
-    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05), 0 24px 60px -20px rgba(0, 0, 0, 0.7);
+    box-shadow: var(--glass-shadow);
   }
 
   /* HUD corner brackets: add .brackets to any positioned box */
@@ -134,7 +200,7 @@ html.lenis body {
   }
 
   .dot-grid {
-    background-image: radial-gradient(rgba(255, 255, 255, 0.09) 1px, transparent 1px);
+    background-image: radial-gradient(var(--dot) 1px, transparent 1px);
     background-size: 28px 28px;
   }
 
@@ -189,7 +255,7 @@ html.lenis body {
     box-shadow: 0 0 0 1px rgba(255, 120, 120, 0.9), 0 14px 50px -6px rgba(255, 45, 45, 0.9);
   }
   .btn-ghost {
-    border: 1px solid rgba(255, 255, 255, 0.18);
+    border: 1px solid color-mix(in oklab, var(--text) 18%, transparent);
     color: var(--text);
   }
   .btn-ghost:hover {
@@ -215,8 +281,8 @@ html.lenis body {
   /* ---------- Forms ---------- */
   .field {
     width: 100%;
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px solid rgba(255, 255, 255, 0.12);
+    background: color-mix(in oklab, var(--text) 3%, transparent);
+    border: 1px solid color-mix(in oklab, var(--text) 12%, transparent);
     border-radius: 12px;
     padding: 0.8rem 1rem;
     color: var(--text);
@@ -227,7 +293,7 @@ html.lenis body {
       box-shadow 0.2s;
   }
   .field::placeholder {
-    color: #6b6b78;
+    color: color-mix(in oklab, var(--muted) 80%, transparent);
   }
   .field:focus {
     outline: none;
@@ -259,10 +325,10 @@ html.lenis body {
   width: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: var(--bg);
+  background: var(--page-bg);
 }
 ::-webkit-scrollbar-thumb {
-  background: #26262f;
+  background: color-mix(in oklab, #8a8a99 45%, transparent);
   border-radius: 99px;
 }
 
@@ -378,4 +444,26 @@ html[data-intro] .site-header {
 .tech-live { animation: tech-live 1.6s ease-out infinite; }
 @media (prefers-reduced-motion: reduce) {
   .tech-live { animation: none; }
+}
+
+/* ---------- Theme-following chrome (nav, mobile bar) ---------- */
+/* ThemeFlow sets data-theme on [data-theme-follow]; colours cross-fade. */
+[data-theme-follow],
+[data-theme-follow] * {
+  transition-property: color, background-color, border-color, box-shadow, opacity, transform, backdrop-filter;
+  transition-duration: 0.6s;
+  transition-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+}
+.logo-swap {
+  display: inline-grid;
+}
+.logo-swap > img {
+  grid-area: 1 / 1;
+}
+.logo-swap > .logo-on-light,
+[data-theme="light"] .logo-swap > .logo-on-dark {
+  opacity: 0;
+}
+[data-theme="light"] .logo-swap > .logo-on-light {
+  opacity: 1;
 }

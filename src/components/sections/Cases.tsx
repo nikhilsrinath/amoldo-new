@@ -24,7 +24,7 @@ function CaseCard({ c, n, wide }: { c: Case; n: number; wide?: boolean }) {
           sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
           className="object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-[1.05]"
         />
-        <div aria-hidden className="absolute inset-0 bg-gradient-to-t from-bg/70 via-bg/0 to-bg/20" />
+        <div aria-hidden className="absolute inset-0 bg-gradient-to-t from-black/30 via-black/0 to-black/10" />
         <span className="hud absolute left-4 top-4 rounded-full border border-white/10 bg-bg/60 px-2.5 py-1 text-text/80 backdrop-blur-md">
           {String(n).padStart(2, "0")}
         </span>
@@ -89,7 +89,7 @@ export default function Cases() {
   );
 
   return (
-    <section id="work" ref={root} aria-labelledby="work-title" className="relative py-24 md:py-32">
+    <section id="work" data-theme="light" ref={root} aria-labelledby="work-title" className="relative py-24 md:py-32">
       <div className="mx-auto max-w-[1400px] px-4 sm:px-8">
         <div className="work-head flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
           <div>
