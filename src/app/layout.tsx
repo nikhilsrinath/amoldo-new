@@ -9,17 +9,17 @@ const plex = IBM_Plex_Mono({
   weight: ["400", "500", "600", "700"],
   display: "swap",
 });
-const inter = Inter({ variable: "--font-inter", subsets: ["latin"], weight: ["400"], display: "swap" });
+const inter = Inter({ variable: "--font-inter", subsets: ["latin"], weight: ["400", "500"], display: "swap" });
 
-export const viewport: Viewport = { themeColor: "#07070A" };
+export const viewport: Viewport = { themeColor: "#FFFFFF" };
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.redantmedia.co.in"),
-  title: "Red Ant Media — Digital Marketing & Brand Growth Company | Chennai",
+  title: "Amoldo Technologies — Digital Marketing & Brand Growth Company | Chennai",
   description:
-    "Building stronger brands. Creating digital demand. Driving measurable growth. Red Ant Media is a Chennai-based digital marketing and brand growth company operating since 2016.",
+    "Building stronger brands. Creating digital demand. Driving measurable growth. Amoldo Technologies is a Chennai-based digital marketing and brand growth company operating since 2016.",
   keywords: [
-    "Red Ant Media",
+    "Amoldo Technologies",
     "Digital Marketing Chennai",
     "Brand Growth Agency",
     "SEO Chennai",
@@ -32,28 +32,28 @@ export const metadata: Metadata = {
     canonical: "https://www.redantmedia.co.in",
   },
   openGraph: {
-    title: "Red Ant Media — Building Stronger Brands & Digital Demand",
+    title: "Amoldo Technologies — Building Stronger Brands & Digital Demand",
     description:
       "Chennai-based digital marketing and brand growth company since 2016. Strategy, SEO, SEM, social media, content, creative communication and ORM.",
     url: "https://www.redantmedia.co.in",
-    siteName: "Red Ant Media",
+    siteName: "Amoldo Technologies",
     locale: "en_IN",
     type: "website",
     images: [
       {
-        url: "/brand/redant-icon-512.png",
+        url: "/brand/amoldo-icon-512.png",
         width: 512,
         height: 512,
-        alt: "Red Ant Media logo",
+        alt: "Amoldo Technologies logo",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Red Ant Media — Digital Marketing & Brand Growth",
+    title: "Amoldo Technologies — Digital Marketing & Brand Growth",
     description:
       "Building stronger brands. Creating digital demand. Driving measurable growth. Operating from Chennai since 2016.",
-    images: ["/brand/redant-icon-512.png"],
+    images: ["/brand/amoldo-icon-512.png"],
   },
 };
 
@@ -63,9 +63,9 @@ const jsonLd = {
     {
       "@type": "Organization",
       "@id": "https://www.redantmedia.co.in/#organization",
-      name: "Red Ant Media",
+      name: "Amoldo Technologies",
       url: "https://www.redantmedia.co.in",
-      logo: "https://www.redantmedia.co.in/brand/redant-logo-light.svg",
+      logo: "https://www.redantmedia.co.in/brand/amoldo-logo-black.svg",
       foundingDate: "2016",
       description:
         "Chennai-based digital marketing and brand growth company helping businesses strengthen market positioning, reach the right audiences, build credibility and turn digital attention into business opportunities.",
@@ -83,9 +83,9 @@ const jsonLd = {
     {
       "@type": "ProfessionalService",
       "@id": "https://www.redantmedia.co.in/#business",
-      name: "Red Ant Media",
+      name: "Amoldo Technologies",
       url: "https://www.redantmedia.co.in",
-      image: "https://www.redantmedia.co.in/brand/redant-icon-512.png",
+      image: "https://www.redantmedia.co.in/brand/amoldo-icon-512.png",
       email: "info@redantmedia.co.in",
       foundingDate: "2016",
       address: {
@@ -123,7 +123,7 @@ export default function RootLayout({
       className={`${plex.variable} ${inter.variable} antialiased`}
     >
       <head>
-        <link rel="preload" href="/brand/redant-logo-light.svg" as="image" type="image/svg+xml" />
+        <link rel="preload" href="/brand/amoldo-logo-black.svg" as="image" type="image/svg+xml" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}

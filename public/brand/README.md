@@ -1,29 +1,17 @@
-# Red Ant Media — brand assets
+# Amoldo Technologies — brand assets
 
-Vector versions traced from the original artwork in `public/redant-logo.png`.
+Vector versions traced from the supplied Amoldo Technologies logo artwork.
 
-| File | Wordmark colour | Use on | Public URL |
-| --- | --- | --- | --- |
-| `redant-logo-light.svg` | White `#FFFFFF` + red ant | **Dark** backgrounds (dark theme) | `/brand/redant-logo-light.svg` |
-| `redant-logo-dark.svg` | Near-black `#171717` + red ant | **Light** backgrounds (light theme) | `/brand/redant-logo-dark.svg` |
-| `redant-icon.svg` | Red "a" ant mark only | Favicon, avatar, app icon | `/brand/redant-icon.svg` |
-| `redant-icon-512.png` | Red "a" ant mark, transparent | Social / PWA / places that need PNG | `/brand/redant-icon-512.png` |
+| File | Colour | Use on |
+| --- | --- | --- |
+| `amoldo-logo-black.svg` | Black wordmark (AMOLDO / TECHNOLOGIES) | Light backgrounds |
+| `amoldo-logo-white.svg` | White wordmark | Dark backgrounds |
+| `amoldo-icon-black.svg` | The "A" mark only, black | Light backgrounds, device backs |
+| `amoldo-icon-white.svg` | The "A" mark only, white | Dark backgrounds, device backs |
+| `amoldo-icon-512.png` | The "A" mark, transparent PNG | Social / Open Graph |
+| `amoldo-logo.png` | Black wordmark raster | Sampled by the hero particle field |
 
-Brand colours: red `#FF0000`, dark text `#171717` (matches `--foreground`), light text `#FFFFFF`.
+The hero builds the logo from the same paths in `src/lib/logoPaths.ts`.
+The favicon, `icon.svg` and `apple-icon.png` in `src/app` use the "A" mark, white on a black rounded square.
 
-Logo aspect ratio: 909 × 333 (≈ 2.73 : 1). Icon: 1 : 1.
-
-## Favicon (wired up automatically by Next.js)
-
-- `src/app/favicon.ico` — 16/32/48 px
-- `src/app/icon.svg` — scalable favicon for modern browsers
-- `src/app/apple-icon.png` — 180 × 180, white background (iOS home screen)
-
-## Usage example (theme-aware)
-
-```tsx
-import Image from "next/image";
-
-<Image src="/brand/redant-logo-dark.svg"  alt="Red Ant Media" width={164} height={60} className="block dark:hidden" priority />
-<Image src="/brand/redant-logo-light.svg" alt="Red Ant Media" width={164} height={60} className="hidden dark:block" priority />
-```
+The `redant-*` files in this folder are the previous brand and are no longer referenced.

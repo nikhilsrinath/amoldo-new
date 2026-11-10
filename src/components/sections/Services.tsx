@@ -14,10 +14,10 @@ if (typeof window !== "undefined") gsap.registerPlugin(ScrambleTextPlugin);
  * 04 · Services — the colony's trail.
  *
  * No pinning: the page scrolls normally. On the left, the nine services sit on
- * a trail; a red ant walks it to whichever service crosses the middle of the
+ * a trail; a black ant walks it to whichever service crosses the middle of the
  * screen, and that title fills with ink. On the right, a sticky panel plays a
  * live demo of the active service — the work itself, not an icon of it — and
- * swaps with a clip reveal led by a red edge.
+ * swaps with a clip reveal led by a black edge.
  *
  * Mobile: same trail and ant; each service carries its own demo, which only
  * plays while it is on screen. Reduced motion: still frames, no walking.
@@ -36,8 +36,8 @@ function Ant() {
     ].map((l, k) => ({ ...l, s, k })),
   );
   return (
-    <svg viewBox="0 0 24 36" className="h-9 w-6 overflow-visible drop-shadow-[0_0_10px_rgba(255,45,45,0.55)]" aria-hidden>
-      <g stroke="var(--red)" strokeWidth="1.3" strokeLinecap="round" fill="none">
+    <svg viewBox="0 0 24 36" className="h-9 w-6 overflow-visible drop-shadow-[0_2px_6px_rgba(0,0,0,0.25)]" aria-hidden>
+      <g stroke="var(--accent)" strokeWidth="1.3" strokeLinecap="round" fill="none">
         <path className="antenna" d="M10.5 6.5 7 1.5M13.5 6.5 17 1.5" />
         {legs.map(({ y, a, s, k }) => (
           <g key={`${s}${k}`} className={`leg leg-${(k + (s > 0 ? 1 : 0)) % 2 ? "a" : "b"}`} style={{ transformOrigin: `12px ${y}px` }}>
@@ -45,7 +45,7 @@ function Ant() {
           </g>
         ))}
       </g>
-      <g fill="var(--red)">
+      <g fill="var(--accent)">
         <ellipse cx="12" cy="8.5" rx="3.2" ry="3" />
         <ellipse cx="12" cy="17" rx="2.4" ry="4.2" />
         <ellipse cx="12" cy="28" rx="4.6" ry="6.4" />
@@ -250,7 +250,7 @@ export default function Services() {
   );
 
   return (
-    <section id="services" data-theme="dark" ref={root} aria-labelledby="services-title" className="relative overflow-x-clip pb-24 pt-24 md:pb-[18vh] md:pt-32">
+    <section id="services" data-theme="light" ref={root} aria-labelledby="services-title" className="relative overflow-x-clip pb-24 pt-24 md:pb-[18vh] md:pt-32">
       <div className="pointer-events-none absolute inset-0 dot-grid opacity-25 [mask-image:linear-gradient(to_bottom,transparent,#000_15%,#000_85%,transparent)]" aria-hidden />
 
       <div className="relative mx-auto max-w-[1400px] px-4 sm:px-8">
@@ -267,8 +267,8 @@ export default function Services() {
         <div className="mt-14 grid gap-16 md:mt-20 md:grid-cols-[minmax(0,1fr)_minmax(0,1.05fr)] lg:gap-24">
           {/* The trail */}
           <div className="svc-list relative pl-10 sm:pl-14">
-            <div aria-hidden className="absolute bottom-0 left-[11px] top-0 w-px bg-[repeating-linear-gradient(to_bottom,rgba(255,255,255,0.16)_0_4px,transparent_4px_10px)] sm:left-[19px]">
-              <div className="svc-trail-fill absolute inset-0 origin-top scale-y-0 bg-[repeating-linear-gradient(to_bottom,var(--red)_0_4px,transparent_4px_10px)]" />
+            <div aria-hidden className="absolute bottom-0 left-[11px] top-0 w-px bg-[repeating-linear-gradient(to_bottom,rgba(0,0,0,0.16)_0_4px,transparent_4px_10px)] sm:left-[19px]">
+              <div className="svc-trail-fill absolute inset-0 origin-top scale-y-0 bg-[repeating-linear-gradient(to_bottom,var(--accent)_0_4px,transparent_4px_10px)]" />
             </div>
             <div aria-hidden className="svc-ant pointer-events-none absolute left-[12px] top-0 z-10 -ml-3 -mt-[18px] sm:left-[20px]">
               <Ant />
@@ -277,7 +277,7 @@ export default function Services() {
             {SERVICES.map((s, i) => (
               <article key={s.title} aria-labelledby={`svc-${i}`} className="svc-row group relative py-10 md:min-h-[44vh] md:py-[7vh]">
                 <h3 id={`svc-${i}`} className="svc-title display text-[clamp(1.75rem,3.3vw,3.1rem)]">
-                  <button type="button" onClick={() => jumpTo.current(i)} className="text-left outline-none focus-visible:ring-2 focus-visible:ring-red focus-visible:ring-offset-4 focus-visible:ring-offset-bg" data-hot>
+                  <button type="button" onClick={() => jumpTo.current(i)} className="text-left outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-4 focus-visible:ring-offset-bg" data-hot>
                     <span className="ink">{s.title}</span>
                   </button>
                 </h3>
@@ -288,7 +288,7 @@ export default function Services() {
                   {s.tags.map((t) => (
                     <li
                       key={t}
-                      className="svc-tag rounded-full border border-white/10 px-3 py-1.5 font-mono text-[11.5px] text-text/70 transition-colors duration-500 group-[.is-active]:border-red/40 group-[.is-active]:text-text"
+                      className="svc-tag rounded-full border border-white/10 px-3 py-1.5 font-mono text-[11.5px] text-text/70 transition-colors duration-500 group-[.is-active]:border-accent/40 group-[.is-active]:text-text"
                     >
                       {t}
                     </li>
@@ -308,12 +308,12 @@ export default function Services() {
             <div className="sticky top-[13vh] h-[74vh] min-h-[480px] [perspective:1600px]">
               <div className="stage-panel relative flex h-full flex-col overflow-hidden rounded-[28px] border border-white/[0.08] bg-bg-2/80 [--mx:50%] [--my:30%] [transform-style:preserve-3d]">
                 <div aria-hidden className="pointer-events-none absolute inset-0 dot-grid opacity-50" />
-                <div aria-hidden className="pointer-events-none absolute inset-0 bg-[radial-gradient(480px_circle_at_var(--mx)_var(--my),rgba(255,45,45,0.12),transparent_70%)]" />
+                <div aria-hidden className="pointer-events-none absolute inset-0 bg-[radial-gradient(480px_circle_at_var(--mx)_var(--my),rgba(0,0,0,0.05),transparent_70%)]" />
 
                 <div className="relative flex items-center gap-3 border-b border-white/[0.06] px-6 py-4">
                   <span className="relative flex h-2 w-2">
-                    <span className="absolute inset-0 animate-ping rounded-full bg-red opacity-60 motion-reduce:hidden" />
-                    <span className="relative h-2 w-2 rounded-full bg-red" />
+                    <span className="absolute inset-0 animate-ping rounded-full bg-accent opacity-60 motion-reduce:hidden" />
+                    <span className="relative h-2 w-2 rounded-full bg-accent" />
                   </span>
                   <span className="stage-label font-mono text-[13px] text-text" aria-live="polite">
                     {SERVICES[0].title}
@@ -326,7 +326,7 @@ export default function Services() {
                       <div className="demo w-full max-w-[440px]">{d.node}</div>
                     </div>
                   ))}
-                  <div className="stage-edge pointer-events-none absolute inset-x-0 z-20 h-[2px] bg-red opacity-0 shadow-[0_0_24px_4px_rgba(255,45,45,0.55)]" />
+                  <div className="stage-edge pointer-events-none absolute inset-x-0 z-20 h-[2px] bg-accent opacity-0 shadow-[0_0_18px_2px_rgba(0,0,0,0.2)]" />
                 </div>
 
                 <nav aria-label="Jump to a service" className="relative flex gap-1.5 border-t border-white/[0.06] px-6 py-4">
@@ -336,10 +336,10 @@ export default function Services() {
                       type="button"
                       aria-label={`Show ${s.title}`}
                       onClick={() => jumpTo.current(i)}
-                      className="stage-tick group/t flex-1 py-2 outline-none focus-visible:ring-2 focus-visible:ring-red"
+                      className="stage-tick group/t flex-1 py-2 outline-none focus-visible:ring-2 focus-visible:ring-accent"
                       data-hot
                     >
-                      <span className="block h-[3px] rounded-full bg-white/10 transition-colors duration-500 group-hover/t:bg-white/30 group-[.is-active]/t:bg-red" />
+                      <span className="block h-[3px] rounded-full bg-white/10 transition-colors duration-500 group-hover/t:bg-white/30 group-[.is-active]/t:bg-accent" />
                     </button>
                   ))}
                 </nav>

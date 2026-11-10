@@ -1,11 +1,13 @@
 /** Small shared building blocks. */
 
+/** Section label: a small solid number pill, then the title in spaced uppercase. */
 export function Index({ n, label, className = "" }: { n: string; label: string; className?: string }) {
   return (
-    <p className={`hud flex items-center gap-3 text-muted ${className}`}>
-      <span className="text-red">{n}</span>
-      <span className="h-px w-8 bg-white/20" aria-hidden />
-      <span>{label}</span>
+    <p className={`flex items-center gap-2.5 ${className}`}>
+      <span className="inline-flex h-[20px] items-center rounded-full bg-accent px-[7px] font-mono text-[10px] font-medium leading-none tabular-nums tracking-[0.02em] text-on-accent">
+        {n}
+      </span>
+      <span className="font-sans text-[10.5px] font-medium uppercase leading-none tracking-[0.18em] text-muted">{label}</span>
     </p>
   );
 }
@@ -14,7 +16,7 @@ export function Glow({ className = "" }: { className?: string }) {
   return (
     <div
       aria-hidden
-      className={`pointer-events-none absolute rounded-full bg-red/20 blur-[120px] ${className}`}
+      className={`pointer-events-none absolute rounded-full bg-accent/20 blur-[120px] ${className}`}
     />
   );
 }

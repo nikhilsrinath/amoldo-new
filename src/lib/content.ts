@@ -12,16 +12,10 @@ export const CONTACT = {
   location: "Chennai, Tamil Nadu, India",
 };
 
-/** Hero statement, one array per line. The full stop is the ant’s eye, drawn by the hero. */
+/** Hero statement, one array per line. The full stop is the A mark's dot, drawn by the hero. */
 export const HERO_LINE = [
   ["We", "put", "brands"],
   ["where", "growth", "is"],
-] as const;
-
-export const TAGLINE = [
-  "Building stronger brands.",
-  "Creating digital demand.",
-  "Driving measurable growth.",
 ] as const;
 
 export const STATS = [
@@ -165,7 +159,7 @@ export const PRINCIPLES = [
   "Build for the long term",
 ];
 
-/** Real project visuals supplied by Red Ant Media (public/clients). */
+/** Real project visuals supplied by Amoldo Technologies (public/clients). */
 export const WORK = [
   { src: "/clients/volvo-tamil-nadu.png", client: "Volvo (Tamil Nadu)", kind: "Campaign poster" },
   { src: "/clients/mylabconnect.png", client: "MyLabConnect", kind: "Website" },

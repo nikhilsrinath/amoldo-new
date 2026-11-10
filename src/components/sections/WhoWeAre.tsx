@@ -78,8 +78,8 @@ export default function WhoWeAre() {
             viewBox="0 0 1000 100"
             preserveAspectRatio="none"
           >
-            <path className="trail" d={TRAIL} fill="none" stroke="#ff2d2d" strokeOpacity="0.45" strokeWidth="1" vectorEffect="non-scaling-stroke" />
-            <path className="trail-head" d={TRAIL} fill="none" stroke="#ff4d4d" strokeWidth="3" strokeLinecap="round" vectorEffect="non-scaling-stroke" />
+            <path className="trail" d={TRAIL} fill="none" stroke="#000000" strokeOpacity="0.3" strokeWidth="1" vectorEffect="non-scaling-stroke" />
+            <path className="trail-head" d={TRAIL} fill="none" stroke="#000000" strokeWidth="3" strokeLinecap="round" vectorEffect="non-scaling-stroke" />
           </svg>
           <ul className="relative grid grid-cols-2 gap-4 md:grid-cols-4 md:gap-8">
             {STATS.map((s) => (
@@ -90,7 +90,7 @@ export default function WhoWeAre() {
                 </span>
                 <p className="display text-[clamp(2.2rem,4.6vw,4.2rem)] tabular-nums">
                   <span className="stat-num">{s.value}</span>
-                  <span className="text-red">{s.suffix}</span>
+                  <span className="text-accent">{s.suffix}</span>
                 </p>
                 <p className="hud mt-3 text-muted">{s.label}</p>
               </li>
@@ -110,7 +110,7 @@ export default function WhoWeAre() {
               <span aria-hidden className="display absolute -right-4 -top-6 text-[8rem] text-white/[0.03]">
                 {i + 1}
               </span>
-              <span aria-hidden className="block h-1 w-10 rounded bg-red transition-all duration-500 group-hover:w-20" />
+              <span aria-hidden className="block h-1 w-10 rounded bg-accent transition-all duration-500 group-hover:w-20" />
               <h3 className="display mt-6 text-2xl">{v.title}</h3>
               <p className="mt-2 text-sm text-muted">{v.line}</p>
             </li>

@@ -25,7 +25,7 @@ export function BookingProvider({ children }: { children: React.ReactNode }) {
 
 export function BookButton({
   children = "Book a free brand assessment",
-  className = "btn btn-red",
+  className = "btn btn-accent",
 }: {
   children?: React.ReactNode;
   className?: string;
@@ -42,7 +42,7 @@ export function BookButton({
 /** Scrolls to the Free Brand Assessment section (10A). */
 export function AssessLink({
   children = "Book a free brand assessment",
-  className = "btn btn-red",
+  className = "btn btn-accent",
   onClick,
 }: {
   children?: React.ReactNode;
@@ -114,17 +114,17 @@ function BookingDialog({ open, onClose }: { open: boolean; onClose: () => void }
         >
           ✕
         </button>
-        <p className="hud text-red">Free · No obligation</p>
+        <p className="hud text-accent">Free · No obligation</p>
         <h2 id="booking-title" className="display mt-3 text-2xl sm:text-3xl">
           Book your free call
         </h2>
         <p className="mt-2 text-sm text-muted">Full brand assessment delivered in under 24 hours.</p>
 
         {sent ? (
-          <p className="mt-8 rounded-2xl border border-cyan/30 bg-cyan/5 p-5 text-sm">
+          <p className="mt-8 rounded-2xl border border-text/30 bg-text/5 p-5 text-sm">
             Your email app should open with your details filled in — just hit send. If it didn&apos;t,
             write to{" "}
-            <a className="text-red underline" href={`mailto:${CONTACT.email}`}>
+            <a className="text-accent underline" href={`mailto:${CONTACT.email}`}>
               {CONTACT.email}
             </a>
             .
@@ -144,7 +144,7 @@ function BookingDialog({ open, onClose }: { open: boolean; onClose: () => void }
                 className="h-[420px] w-full rounded-2xl border border-white/10 sm:col-span-2"
               />
             ) : null}
-            <button type="submit" className="btn btn-red mt-2 sm:col-span-2">
+            <button type="submit" className="btn btn-accent mt-2 sm:col-span-2">
               Book my free call <Arrow />
             </button>
             <p className="hud text-center text-muted sm:col-span-2">Free call · Assessment within 24 hours</p>

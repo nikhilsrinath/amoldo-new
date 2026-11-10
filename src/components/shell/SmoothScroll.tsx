@@ -6,11 +6,16 @@ import { gsap, ScrollTrigger } from "@/lib/gsap";
 
 let lenisRef: Lenis | null = null;
 
+const easeInOutCubic = (t: number) => (t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2);
+
 /** Scroll to a selector, element or absolute Y position, using Lenis when active. */
-export function scrollToTarget(target: string | HTMLElement | number) {
+export function scrollToTarget(target: string | HTMLElement | number, duration = 1.4, onComplete?: () => void) {
   if (typeof target === "number") {
-    if (lenisRef) lenisRef.scrollTo(target, { duration: 1.4 });
-    else window.scrollTo({ top: target, behavior: "smooth" });
+    if (lenisRef) lenisRef.scrollTo(target, { duration, easing: easeInOutCubic, lock: true, force: true, onComplete });
+    else {
+      window.scrollTo({ top: target, behavior: "smooth" });
+      if (onComplete) window.setTimeout(onComplete, duration * 1000);
+    }
     return;
   }
   const el = typeof target === "string" ? document.querySelector<HTMLElement>(target) : target;
@@ -103,17 +108,17 @@ export default function SmoothScroll() {
       <div
         ref={bar}
         aria-hidden
-        className="fixed inset-x-0 top-0 z-[70] h-[2px] origin-left scale-x-0 bg-red shadow-[0_0_12px_rgba(255,45,45,0.9)]"
+        className="fixed inset-x-0 top-0 z-[70] h-[2px] origin-left scale-x-0 bg-accent"
       />
       <div
         ref={dot}
         aria-hidden
-        className="pointer-events-none fixed left-0 top-0 z-[80] h-1.5 w-1.5 rounded-full bg-red opacity-0"
+        className="pointer-events-none fixed left-0 top-0 z-[80] h-1.5 w-1.5 rounded-full bg-accent opacity-0"
       />
       <div
         ref={ring}
         aria-hidden
-        className="pointer-events-none fixed left-0 top-0 z-[80] h-8 w-8 rounded-full border border-red/60 opacity-0"
+        className="pointer-events-none fixed left-0 top-0 z-[80] h-8 w-8 rounded-full border border-accent/60 opacity-0"
       />
       <div className="grain" aria-hidden />
     </>

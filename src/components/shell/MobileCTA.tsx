@@ -44,13 +44,13 @@ export default function MobileCTA() {
     >
       <a
         href="#assessment"
-        className="mx-auto flex max-w-md items-center justify-between gap-3 rounded-full border border-red/40 bg-bg/90 py-1.5 pl-5 pr-1.5 shadow-[0_10px_40px_-10px_rgba(255,45,45,0.6)] backdrop-blur-xl"
+        className="mx-auto flex max-w-md items-center justify-between gap-3 rounded-full border border-accent/40 bg-bg/90 py-1.5 pl-5 pr-1.5 shadow-[0_10px_40px_-14px_rgba(0,0,0,0.35)] backdrop-blur-xl"
       >
         <span className="min-w-0 text-[13px] leading-tight">
           <span className="block truncate">Free brand assessment</span>
           <span className="block truncate text-[11px] text-muted">Delivered in under 24 hours</span>
         </span>
-        <span className="shrink-0 whitespace-nowrap rounded-full bg-red px-4 py-2.5 text-[13px] font-semibold text-white">Book now</span>
+        <span className="shrink-0 whitespace-nowrap rounded-full bg-accent px-4 py-2.5 text-[13px] font-semibold text-on-accent">Book now</span>
       </a>
     </div>
   );

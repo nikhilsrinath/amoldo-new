@@ -19,7 +19,7 @@ function CaseCard({ c, n, wide }: { c: Case; n: number; wide?: boolean }) {
       <div className={`relative aspect-[5/4] overflow-hidden border-b border-white/[0.06] ${wide ? "sm:aspect-auto sm:min-h-[300px] sm:border-b-0 sm:border-r lg:aspect-[5/4] lg:min-h-0 lg:border-b lg:border-r-0" : ""}`}>
         <Image
           src={c.image}
-          alt={`${c.client} — work by Red Ant Media`}
+          alt={`${c.client} — work by Amoldo Technologies`}
           fill
           sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
           className="object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-[1.05]"
@@ -33,7 +33,7 @@ function CaseCard({ c, n, wide }: { c: Case; n: number; wide?: boolean }) {
       {/* Copy */}
       <div className="flex flex-1 flex-col p-6 md:p-7">
         <p className="hud text-muted">
-          {c.sector} <span className="text-red">·</span> {c.focus}
+          {c.sector} <span className="text-accent">·</span> {c.focus}
         </p>
         <h3 className="display mt-3 text-[clamp(1.5rem,2.2vw,1.9rem)]">{c.client}</h3>
         <p className="mt-3 text-[15px] leading-relaxed text-muted">{c.line}</p>
@@ -45,7 +45,7 @@ function CaseCard({ c, n, wide }: { c: Case; n: number; wide?: boolean }) {
               </li>
             ))}
             {c.implementation && (
-              <li className="hud rounded-full border border-cyan/30 bg-cyan/5 px-3 py-1.5 text-[10px] text-cyan">Implementation experience</li>
+              <li className="hud rounded-full border border-text/30 bg-text/5 px-3 py-1.5 text-[10px] text-text">Implementation experience</li>
             )}
           </ul>
         )}
@@ -93,9 +93,9 @@ export default function Cases() {
       <div className="mx-auto max-w-[1400px] px-4 sm:px-8">
         <div className="work-head flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
           <div>
-            <Index n="09" label="Selected experience" />
+            <Index n="08" label="Selected experience" />
             <h2 id="work-title" className="display mt-4 text-[clamp(2rem,4vw,3.6rem)]">
-              Work that <span className="text-red">speaks for itself.</span>
+              Work that <span className="text-accent">speaks for itself.</span>
             </h2>
           </div>
           <p className="max-w-sm text-muted md:text-right">

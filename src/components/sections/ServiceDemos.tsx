@@ -77,8 +77,8 @@ const strategy: Demo = {
       <svg viewBox="0 0 400 300" className="absolute inset-0 h-full w-full overflow-visible">
         {CH.map((c) => (
           <g key={c.label}>
-            <path className="ln" d={`M200 135 L${c.x * 4} ${c.y * 3}`} stroke="rgba(255,255,255,0.18)" strokeWidth="1.5" strokeDasharray="3 5" fill="none" />
-            <circle className="pulse" r="3.5" fill="var(--red)" cx={c.x * 4} cy={c.y * 3} />
+            <path className="ln" d={`M200 135 L${c.x * 4} ${c.y * 3}`} stroke="var(--text)" strokeOpacity="0.2" strokeWidth="1.5" strokeDasharray="3 5" fill="none" />
+            <circle className="pulse" r="3.5" fill="var(--accent)" cx={c.x * 4} cy={c.y * 3} />
           </g>
         ))}
       </svg>
@@ -91,7 +91,7 @@ const strategy: Demo = {
           {c.label}
         </span>
       ))}
-      <div className="goal absolute left-1/2 top-[45%] -translate-x-1/2 -translate-y-1/2 rounded-2xl bg-red px-5 py-3 text-center text-white shadow-[0_18px_50px_-12px_var(--red)]">
+      <div className="goal absolute left-1/2 top-[45%] -translate-x-1/2 -translate-y-1/2 rounded-2xl bg-accent px-5 py-3 text-center text-on-accent shadow-[0_18px_40px_-16px_rgba(0,0,0,0.5)]">
         <span className="block font-mono text-[10px] uppercase tracking-[0.18em] opacity-80">Business goal</span>
         <span className="mt-0.5 block font-mono text-[15px] font-semibold">More qualified leads</span>
       </div>
@@ -103,7 +103,7 @@ const strategy: Demo = {
               <span className="kv text-text">0%</span>
             </div>
             <div className="mt-1.5 h-[5px] overflow-hidden rounded-full bg-white/10">
-              <div className="kf h-full origin-left rounded-full bg-red" style={{ width: `${[78, 64, 52][i]}%` }} />
+              <div className="kf h-full origin-left rounded-full bg-accent" style={{ width: `${[78, 64, 52][i]}%` }} />
             </div>
           </div>
         ))}
@@ -145,7 +145,7 @@ const seo: Demo = {
         </svg>
         <span className="font-mono text-[13px] text-text">
           <span className="qry" />
-          <span className="caret ml-px inline-block h-[1.05em] w-px translate-y-[2px] bg-red" />
+          <span className="caret ml-px inline-block h-[1.05em] w-px translate-y-[2px] bg-accent" />
         </span>
       </div>
       <div className="relative mt-4" style={{ height: SEO_ROWS * 58 }}>
@@ -156,15 +156,15 @@ const seo: Demo = {
               key={i}
               data-start={i}
               className={`row absolute inset-x-0 top-0 flex h-[50px] items-center gap-3 rounded-xl px-4 ${
-                you ? "you z-10 border border-red/70 bg-red/[0.07]" : "border border-white/[0.06] bg-white/[0.02]"
+                you ? "you z-10 border border-accent/70 bg-accent/[0.07]" : "border border-white/[0.06] bg-white/[0.02]"
               }`}
             >
-              <span className={`rk w-7 font-mono text-[12px] ${you ? "text-red" : "text-muted"}`}>#{i + 1}</span>
+              <span className={`rk w-7 font-mono text-[12px] ${you ? "text-accent" : "text-muted"}`}>#{i + 1}</span>
               <span className="flex-1">
                 {you ? (
                   <>
                     <span className="block font-mono text-[12.5px] text-text">yourbrand.in</span>
-                    <Bar w="62%" className="mt-1.5 !bg-red/40" />
+                    <Bar w="62%" className="mt-1.5 !bg-accent/40" />
                   </>
                 ) : (
                   <>
@@ -174,7 +174,7 @@ const seo: Demo = {
                 )}
               </span>
               {you && (
-                <span className="arrow font-mono text-[11px] text-red">
+                <span className="arrow font-mono text-[11px] text-accent">
                   ▲ <span className="up">0</span>
                 </span>
               )}
@@ -214,7 +214,7 @@ const seo: Demo = {
       [order[pos - 1], order[pos]] = [order[pos], order[pos - 1]];
       t += 0.75;
     }
-    tl.fromTo(you, { boxShadow: "0 0 0 0 rgba(255,45,45,0)" }, { boxShadow: "0 0 0 6px rgba(255,45,45,0.12)", duration: 0.5 }, t);
+    tl.fromTo(you, { boxShadow: "0 0 0 0 rgba(0,0,0,0)" }, { boxShadow: "0 0 0 6px rgba(0,0,0,0.08)", duration: 0.5 }, t);
     tl.addLabel("rest", t + 0.2)
       .to(el.children, { autoAlpha: 0, duration: 0.5, ease: "power2.in" }, "+=1.8")
       .set(el.children, { autoAlpha: 1 })
@@ -230,13 +230,13 @@ const sem: Demo = {
   node: (
     <div className="relative w-full">
       <div className="flex items-center gap-3 rounded-full border border-white/12 bg-bg px-4 py-3 font-mono text-[13px] text-text">
-        <span className="h-2 w-2 rounded-full bg-red" />
+        <span className="h-2 w-2 rounded-full bg-accent" />
         <span className="qry2" />
       </div>
       <div className="relative mt-4 space-y-3">
-        <div className="ad relative z-10 rounded-xl border border-red/60 bg-bg-2 p-4 shadow-[0_20px_50px_-20px_rgba(255,45,45,0.5)]">
+        <div className="ad relative z-10 rounded-xl border border-accent/60 bg-bg-2 p-4 shadow-[0_20px_40px_-20px_rgba(0,0,0,0.35)]">
           <div className="flex items-center gap-2 font-mono text-[11px]">
-            <span className="rounded bg-red px-1.5 py-0.5 font-semibold text-white">Sponsored</span>
+            <span className="rounded bg-accent px-1.5 py-0.5 font-semibold text-on-accent">Sponsored</span>
             <span className="text-muted">yourbrand.in/visit</span>
           </div>
           <p className="mt-2 font-mono text-[14px] font-semibold text-text">Book a free design consultation</p>
@@ -264,7 +264,7 @@ const sem: Demo = {
         ))}
       </div>
       <div className="toast absolute right-2 top-14 z-30 flex items-center gap-2 rounded-full bg-text px-3.5 py-2 font-mono text-[12px] font-semibold text-bg shadow-xl">
-        <span className="h-1.5 w-1.5 rounded-full bg-red" /> New enquiry
+        <span className="h-1.5 w-1.5 rounded-full bg-accent" /> New enquiry
       </div>
       <Cursor className="left-0 top-0" />
     </div>
@@ -301,16 +301,16 @@ const smo: Demo = {
         <div className="flex items-center gap-4">
           <div className="relative h-16 w-16 shrink-0">
             <svg viewBox="0 0 64 64" className="absolute inset-0 -rotate-90">
-              <circle className="ring" cx="32" cy="32" r="30" fill="none" stroke="var(--red)" strokeWidth="2.5" />
+              <circle className="ring" cx="32" cy="32" r="30" fill="none" stroke="var(--accent)" strokeWidth="2.5" />
             </svg>
-            <div className="ava absolute inset-[6px] grid place-items-center rounded-full bg-red/90 font-mono text-[18px] font-bold text-white">YB</div>
+            <div className="ava absolute inset-[6px] grid place-items-center rounded-full bg-accent/90 font-mono text-[18px] font-bold text-on-accent">YB</div>
           </div>
           <div className="flex-1">
             <div className="flex items-center gap-1.5">
               <span className="nm font-mono text-[15px] font-semibold text-text">Your Brand</span>
-              <svg viewBox="0 0 20 20" className="vf h-4 w-4 text-red">
+              <svg viewBox="0 0 20 20" className="vf h-4 w-4 text-accent">
                 <path d="M10 1l2.4 1.8 3-.1.9 2.8 2.4 1.8-.9 2.8.9 2.8-2.4 1.8-.9 2.8-3-.1L10 19l-2.4-1.8-3 .1-.9-2.8L1.3 12.7l.9-2.8-.9-2.8 2.4-1.8.9-2.8 3 .1z" fill="currentColor" />
-                <path d="m6.5 10 2.4 2.4 4.6-4.8" stroke="#fff" strokeWidth="1.8" fill="none" strokeLinecap="round" />
+                <path d="m6.5 10 2.4 2.4 4.6-4.8" stroke="var(--on-accent)" strokeWidth="1.8" fill="none" strokeLinecap="round" />
               </svg>
             </div>
             <span className="bio mt-2 block space-y-1.5">
@@ -324,7 +324,7 @@ const smo: Demo = {
             <div
               key={i}
               className="tile aspect-square rounded-md"
-              style={{ background: i % 3 === 1 ? "var(--red)" : `rgba(255,255,255,${0.05 + (i % 2) * 0.04})` }}
+              style={{ background: i % 3 === 1 ? "var(--accent)" : `color-mix(in oklab, var(--text) ${5 + (i % 2) * 4}%, transparent)` }}
             />
           ))}
         </div>
@@ -334,7 +334,7 @@ const smo: Demo = {
           <div key={p} className="plat flex items-center justify-between rounded-xl border border-white/[0.08] px-3 py-2.5 font-mono text-[11.5px] text-text/85">
             {p}
             <svg viewBox="0 0 16 16" className="h-3.5 w-3.5">
-              <path className="ck" d="m3 8.5 3 3 7-7" stroke="var(--red)" strokeWidth="2" fill="none" strokeLinecap="round" />
+              <path className="ck" d="m3 8.5 3 3 7-7" stroke="var(--accent)" strokeWidth="2" fill="none" strokeLinecap="round" />
             </svg>
           </div>
         ))}
@@ -381,15 +381,15 @@ const smm: Demo = {
             return (
               <div key={i} className={`post rounded-2xl p-2 ${you ? "you bg-white/[0.04]" : "bg-white/[0.025]"}`}>
                 <div className="flex items-center gap-1.5">
-                  <span className={`h-4 w-4 rounded-full ${you ? "bg-red" : "bg-white/15"}`} />
+                  <span className={`h-4 w-4 rounded-full ${you ? "bg-accent" : "bg-white/15"}`} />
                   <Bar w={you ? "50%" : "40%"} className={you ? "!bg-text/50" : ""} />
                 </div>
-                <div className={`relative mt-2 h-[120px] overflow-hidden rounded-xl ${you ? "bg-red" : "bg-white/[0.06]"}`}>
-                  {you && <span className="absolute inset-x-3 bottom-3 font-mono text-[15px] font-bold leading-tight text-white">Your new collection is live</span>}
+                <div className={`relative mt-2 h-[120px] overflow-hidden rounded-xl ${you ? "bg-accent" : "bg-white/[0.06]"}`}>
+                  {you && <span className="absolute inset-x-3 bottom-3 font-mono text-[15px] font-bold leading-tight text-on-accent">Your new collection is live</span>}
                 </div>
                 {you && (
                   <div className="mt-2 flex items-center gap-1.5 font-mono text-[11px] text-text">
-                    <Heart className="hrt h-3.5 w-3.5 text-red" />
+                    <Heart className="hrt h-3.5 w-3.5 text-accent" />
                     <span className="likes">0</span>
                   </div>
                 )}
@@ -399,7 +399,7 @@ const smm: Demo = {
         </div>
         <div className="floaters pointer-events-none absolute inset-0">
           {Array.from({ length: 7 }, (_, i) => (
-            <Heart key={i} className="fh absolute bottom-16 left-12 h-4 w-4 text-red" />
+            <Heart key={i} className="fh absolute bottom-16 left-12 h-4 w-4 text-accent" />
           ))}
         </div>
       </div>
@@ -467,7 +467,7 @@ const content: Demo = {
             <span className="font-mono text-[11.5px] text-muted">{s.label}</span>
             <span className="flex gap-1.5">
               {s.pieces.map((p) => (
-                <span key={p} className="piece rounded-md border border-red/50 bg-red/10 px-2 py-1 font-mono text-[10.5px] text-text">
+                <span key={p} className="piece rounded-md border border-accent/50 bg-accent/10 px-2 py-1 font-mono text-[10.5px] text-text">
                   {p}
                 </span>
               ))}
@@ -481,7 +481,7 @@ const content: Demo = {
         ))}
       </div>
       <div className="won mt-4 flex items-center justify-center gap-3 font-mono">
-        <span className="h-2 w-2 rounded-full bg-red" />
+        <span className="h-2 w-2 rounded-full bg-accent" />
         <span className="text-[12px] text-muted">Ready to buy</span>
         <span className="wv text-[20px] font-semibold text-text">0</span>
       </div>
@@ -494,7 +494,7 @@ const content: Demo = {
     tl.fromTo(q(".stage"), { autoAlpha: 0, scaleX: 0.8 }, { autoAlpha: 1, scaleX: 1, duration: 0.55, stagger: 0.12 }, 0)
       .fromTo(q(".piece"), { autoAlpha: 0, y: -14 }, { autoAlpha: 1, y: 0, duration: 0.4, stagger: 0.12, ease: "back.out(2)" }, 0.5)
       .fromTo(q(".won"), { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.4 }, 1);
-    // people drift down; fewer make it to each stage, the ones who do turn red
+    // people drift down; fewer make it to each stage, the ones who do grow
     dots.forEach((d, i) => {
       const depth = i < 5 ? 3 : i < 9 ? 2 : 1; // how far each one gets
       const ys = [37, 121, 226];
@@ -511,7 +511,7 @@ const content: Demo = {
               duration: 0.55,
               ease: "power2.inOut",
             })),
-            depth === 3 ? { backgroundColor: "var(--red)", scale: 1.4, duration: 0.2 } : { autoAlpha: 0, duration: 0.3 },
+            depth === 3 ? { backgroundColor: "var(--accent)", scale: 1.4, duration: 0.2 } : { autoAlpha: 0, duration: 0.3 },
           ],
         },
         1 + (i % 7) * 0.14 + Math.floor(i / 7) * 0.45,
@@ -532,8 +532,8 @@ const SEGS = ["New customers", "Loyal regulars", "Gone quiet"];
 function Envelope({ className = "" }: { className?: string }) {
   return (
     <svg viewBox="0 0 28 20" className={className} aria-hidden>
-      <rect x="1" y="1" width="26" height="18" rx="3" fill="var(--bg-2)" stroke="var(--red)" strokeWidth="1.6" />
-      <path d="m2 3 12 8 12-8" fill="none" stroke="var(--red)" strokeWidth="1.6" strokeLinejoin="round" />
+      <rect x="1" y="1" width="26" height="18" rx="3" fill="var(--bg-2)" stroke="var(--accent)" strokeWidth="1.6" />
+      <path d="m2 3 12 8 12-8" fill="none" stroke="var(--accent)" strokeWidth="1.6" strokeLinejoin="round" />
     </svg>
   );
 }
@@ -543,7 +543,7 @@ const email: Demo = {
       <div className="src absolute left-1/2 top-0 w-[58%] -translate-x-1/2 rounded-2xl border border-white/10 bg-bg-2 p-3.5">
         <div className="flex items-center justify-between font-mono text-[11px]">
           <span className="text-muted">Campaign</span>
-          <span className="sent rounded-full bg-red px-2 py-0.5 font-semibold text-white">Sending</span>
+          <span className="sent rounded-full bg-accent px-2 py-0.5 font-semibold text-on-accent">Sending</span>
         </div>
         <p className="mt-1.5 font-mono text-[13px] font-semibold text-text">Your weekend offer</p>
       </div>
@@ -559,7 +559,7 @@ const email: Demo = {
               <span className={`op${i} font-mono text-[17px] font-semibold text-text`}>0%</span>
             </div>
             <div className="mt-1.5 h-[5px] overflow-hidden rounded-full bg-white/10">
-              <div className="of h-full origin-left rounded-full bg-red" style={{ width: `${[48, 71, 34][i]}%` }} />
+              <div className="of h-full origin-left rounded-full bg-accent" style={{ width: `${[48, 71, 34][i]}%` }} />
             </div>
           </div>
         ))}
@@ -590,7 +590,7 @@ const email: Demo = {
         0.8 + i * 0.16,
       );
     });
-    tl.fromTo(q(".bin"), { borderColor: "rgba(255,255,255,0.08)" }, { borderColor: "rgba(255,45,45,0.55)", duration: 0.2, yoyo: true, repeat: 5, stagger: 0.16 }, 1.6)
+    tl.fromTo(q(".bin"), { borderColor: "rgba(0,0,0,0.08)" }, { borderColor: "rgba(0,0,0,0.6)", duration: 0.2, yoyo: true, repeat: 5, stagger: 0.16 }, 1.6)
       .set(q(".sent"), { textContent: "Delivered" }, 2.6)
       .fromTo(q(".of"), { scaleX: 0 }, { scaleX: 1, duration: 1.3, stagger: 0.12, ease: "power2.out" }, 2.6);
     [48, 71, 34].forEach((v, i) => count(tl, q(`.op${i}`)[0], 0, v, 2.6 + i * 0.12, { dur: 1.3, suffix: "%" }));
@@ -620,7 +620,7 @@ const orm: Demo = {
             ))}
             <div className="sf absolute inset-y-0 left-0 flex gap-1 overflow-hidden" style={{ width: "72%" }}>
               {Array.from({ length: 5 }, (_, i) => (
-                <Star key={i} className="h-5 w-5 shrink-0 text-red" />
+                <Star key={i} className="h-5 w-5 shrink-0 text-accent" />
               ))}
             </div>
           </div>
@@ -636,13 +636,13 @@ const orm: Demo = {
               <span className="font-mono text-[12px] font-semibold text-text">{r.who}</span>
               <span className="flex gap-0.5">
                 {Array.from({ length: 5 }, (_, i) => (
-                  <Star key={i} className={`h-3 w-3 ${i < r.stars ? "text-red" : "text-white/15"}`} />
+                  <Star key={i} className={`h-3 w-3 ${i < r.stars ? "text-accent" : "text-white/15"}`} />
                 ))}
               </span>
             </div>
             <p className="mt-1 text-[13px] text-muted">{r.text}</p>
-            <div className="rep mt-2.5 border-l-2 border-red pl-3">
-              <span className="block font-mono text-[10.5px] text-red">Reply from Your Brand</span>
+            <div className="rep mt-2.5 border-l-2 border-accent pl-3">
+              <span className="block font-mono text-[10.5px] text-accent">Reply from Your Brand</span>
               <span className="rt mt-0.5 block min-h-[1.25em] text-[12.5px] text-text" data-text={r.reply} />
             </div>
           </div>
@@ -680,31 +680,31 @@ const analytics: Demo = {
           <span className="block text-[11px] text-muted">Conversions / week</span>
           <span className="cv block text-[30px] font-semibold leading-tight tracking-[-0.03em] text-text">42</span>
         </div>
-        <span className="delta rounded-full bg-red/15 px-2.5 py-1 text-[12px] font-semibold text-red">
+        <span className="delta rounded-full bg-accent/15 px-2.5 py-1 text-[12px] font-semibold text-accent">
           +<span className="dv">0</span>%
         </span>
       </div>
       <div className="relative mt-4 aspect-[16/9] w-full">
         <svg viewBox="0 0 400 225" className="absolute inset-0 h-full w-full overflow-visible" preserveAspectRatio="none">
           {[45, 100, 155, 210].map((y) => (
-            <line key={y} x1="0" x2="400" y1={y} y2={y} stroke="rgba(255,255,255,0.06)" />
+            <line key={y} x1="0" x2="400" y1={y} y2={y} stroke="var(--text)" strokeOpacity="0.08" />
           ))}
-          <path className="area" d="M0 175 L50 168 L100 178 L150 160 L200 166 L240 150 L290 112 L340 78 L400 34 L400 225 L0 225Z" fill="rgba(255,45,45,0.05)" />
-          <path className="line" d="M0 175 L50 168 L100 178 L150 160 L200 166 L240 150 L290 112 L340 78 L400 34" stroke="var(--red)" strokeWidth="2.5" fill="none" strokeLinejoin="round" vectorEffect="non-scaling-stroke" />
+          <path className="area" d="M0 175 L50 168 L100 178 L150 160 L200 166 L240 150 L290 112 L340 78 L400 34 L400 225 L0 225Z" fill="var(--text)" fillOpacity="0.05" />
+          <path className="line" d="M0 175 L50 168 L100 178 L150 160 L200 166 L240 150 L290 112 L340 78 L400 34" stroke="var(--accent)" strokeWidth="2.5" fill="none" strokeLinejoin="round" vectorEffect="non-scaling-stroke" />
           <line className="mark" x1="220" x2="220" y1="10" y2="225" stroke="var(--text)" strokeDasharray="3 4" strokeOpacity="0.5" vectorEffect="non-scaling-stroke" />
         </svg>
         <span className="flag absolute left-[55%] top-0 ml-2 rounded-md bg-text px-2 py-1 font-mono text-[10.5px] font-semibold text-bg">New landing page</span>
-        <span className="tip absolute right-0 top-[15%] h-3 w-3 -translate-y-1/2 translate-x-1/2 rounded-full border-2 border-bg bg-red shadow-[0_0_0_6px_rgba(255,45,45,0.25)]" />
+        <span className="tip absolute right-0 top-[15%] h-3 w-3 -translate-y-1/2 translate-x-1/2 rounded-full border-2 border-bg bg-accent shadow-[0_0_0_6px_rgba(0,0,0,0.12)]" />
       </div>
       <div className="mt-4 grid grid-cols-2 gap-3 font-mono">
         {[
           ["Version A", 2.1, "va", false],
           ["Version B", 3.8, "vb", true],
         ].map(([l, v, c, win]) => (
-          <div key={c as string} className={`ab rounded-xl border px-3 py-2.5 ${win ? "border-red/60" : "border-white/[0.08]"}`}>
+          <div key={c as string} className={`ab rounded-xl border px-3 py-2.5 ${win ? "border-accent/60" : "border-white/[0.08]"}`}>
             <span className="flex justify-between text-[10.5px] text-muted">
               {l as string}
-              {win && <span className="text-red">Winner</span>}
+              {win && <span className="text-accent">Winner</span>}
             </span>
             <span className={`${c} block text-[17px] font-semibold text-text`}>{String(v)}%</span>
           </div>

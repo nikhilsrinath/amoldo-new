@@ -3,6 +3,7 @@
 import { useEffect, useRef } from "react";
 import { gsap, useGSAP, MM, ScrollTrigger, sceneTimeline, settle } from "@/lib/gsap";
 import { BookButton } from "../shell/Booking";
+import { Index } from "../ui";
 
 /**
  * 10A · Free brand assessment.
@@ -108,7 +109,7 @@ export default function Assessment() {
             at + 0.06,
           );
         });
-        tl.to(q(".lp-ring"), { drawSVG: `${SCORE_B}%`, stroke: "#4de1ff", duration: 0.6, ease: "power1.inOut" }, 2.45)
+        tl.to(q(".lp-ring"), { drawSVG: `${SCORE_B}%`, stroke: "#ffffff", duration: 0.6, ease: "power1.inOut" }, 2.45)
           .to(score, { v: SCORE_B, duration: 0.6, ease: "power1.inOut", onUpdate: paint }, 2.45)
           .to(q(".lp-rig"), { rotationY: 0, duration: 0.7, ease: "power2.inOut" }, 2.4)
           .to(q(".lp-cam"), { rotationX: -8, duration: 0.7, ease: "power2.inOut" }, 2.4);
@@ -137,23 +138,19 @@ export default function Assessment() {
   );
 
   return (
-    <section id="assessment" data-theme="dark" ref={root} aria-labelledby="assess-title" className="relative h-[100svh] min-h-[620px] overflow-hidden">
-      <div aria-hidden className="pointer-events-none absolute left-1/2 top-[42%] h-[60vmin] w-[90vmin] -translate-x-1/2 -translate-y-1/2 rounded-full bg-red/[0.10] blur-[140px]" />
+    <section id="assessment" data-theme="light" ref={root} aria-labelledby="assess-title" className="relative h-[100svh] min-h-[620px] overflow-hidden">
+      <div aria-hidden className="pointer-events-none absolute left-1/2 top-[42%] h-[60vmin] w-[90vmin] -translate-x-1/2 -translate-y-1/2 rounded-full bg-accent/[0.05] blur-[140px]" />
 
       <div className="relative mx-auto flex h-full max-w-[1200px] flex-col px-4 pb-6 pt-20 sm:px-8 md:pb-8 md:pt-24">
         {/* label */}
-        <p className="hud flex items-center justify-center gap-3 text-muted">
-          <span className="text-red">10</span>
-          <span className="h-px w-8 bg-white/20" aria-hidden />
-          Free brand assessment
-        </p>
+        <Index n="09" label="Free brand assessment" className="justify-center" />
 
         {/* stage */}
         <div ref={box} className="relative min-h-0 flex-1" role="img" aria-label="A laptop opens and runs a scan of your brand: five areas are checked, three weak ones are fixed, and the brand score rises from 58 to 92 before the report is ready.">
           <div className="absolute inset-0 [perspective:1600px]">
             <div ref={fit} className="absolute left-1/2 top-1/2" style={{ width: FIT_W, height: FIT_H, marginLeft: -FIT_W / 2, marginTop: -FIT_H / 2, transform: "scale(var(--fit, 1))", transformStyle: "preserve-3d" }}>
               {/* floor shadow */}
-              <div aria-hidden className="absolute left-1/2 top-[88%] h-20 w-[80%] -translate-x-1/2 rounded-[50%] bg-black/80 blur-2xl" />
+              <div aria-hidden className="absolute left-1/2 top-[88%] h-20 w-[80%] -translate-x-1/2 rounded-[50%] bg-black/30 blur-2xl" />
 
               <div className="lp-cam absolute left-1/2 top-[67%]" style={{ transformStyle: "preserve-3d" }}>
                 <div className="lp-rig absolute left-0 top-0" style={{ transformStyle: "preserve-3d" }}>
@@ -178,10 +175,10 @@ export default function Assessment() {
           </div>
           <div className="slot-b absolute inset-0 flex flex-col items-center justify-center text-center opacity-0">
             <h2 id="assess-title" className="display text-[clamp(1.4rem,3.2vw,2.6rem)] leading-tight">
-              Book a free call. <span className="text-red">Get your assessment in under 24&nbsp;hours.</span>
+              Book a free call. <span className="text-accent">Get your assessment in under 24&nbsp;hours.</span>
             </h2>
             <div className="mt-5 flex flex-col items-center gap-3 sm:flex-row sm:gap-5">
-              <BookButton className="btn btn-red h-12 px-7 text-[15px] md:h-14 md:text-base">Book my free call</BookButton>
+              <BookButton className="btn btn-accent h-12 px-7 text-[15px] md:h-14 md:text-base">Book my free call</BookButton>
               <span className="hud text-[10px] text-muted">Free · No obligation</span>
             </div>
           </div>
@@ -201,22 +198,23 @@ function Lid() {
     >
       {/* edge thickness */}
       {[0.25, 0.5, 0.75].map((f) => (
-        <div key={f} aria-hidden className="absolute inset-0 rounded-[18px] bg-[#2a2a31]" style={{ transform: `translateZ(${-LT / 2 + LT * f}px)` }} />
+        <div key={f} aria-hidden className="absolute inset-0 rounded-[18px] bg-[#2a2a2a]" style={{ transform: `translateZ(${-LT / 2 + LT * f}px)` }} />
       ))}
 
       {/* back of lid (visible while closed) */}
       <div
         aria-hidden
-        className="absolute inset-0 grid place-items-center rounded-[18px] bg-[linear-gradient(160deg,#3a3a44,#1d1d24_55%,#2c2c35)] [backface-visibility:hidden]"
+        className="absolute inset-0 grid place-items-center rounded-[18px] bg-[linear-gradient(160deg,#3a3a3a,#1d1d1d_55%,#2c2c2c)] [backface-visibility:hidden]"
         style={{ transform: `rotateY(180deg) translateZ(${LT / 2}px)` }}
       >
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src="/brand/redant-icon.svg" alt="" className="w-16 opacity-80" />
+        <img src="/brand/amoldo-icon-white.svg" alt="" className="w-16 opacity-80" />
       </div>
 
       {/* screen side */}
       <div
-        className="absolute inset-0 rounded-[18px] bg-[#050507] p-[14px] shadow-[inset_0_0_0_1px_rgba(255,255,255,0.08)] [backface-visibility:hidden]"
+        data-theme="dark"
+        className="absolute inset-0 rounded-[18px] bg-[#050505] p-[14px] shadow-[inset_0_0_0_1px_rgba(255,255,255,0.08)] [backface-visibility:hidden]"
         style={{ transform: `translateZ(${LT / 2}px)` }}
       >
         <span aria-hidden className="absolute left-1/2 top-[5px] h-1 w-1 -translate-x-1/2 rounded-full bg-white/20" />
@@ -234,14 +232,14 @@ function Base() {
     >
       {/* slab thickness (local -z points down once rotated) */}
       {[1, 0.66, 0.33].map((f) => (
-        <div key={f} aria-hidden className="absolute inset-0 rounded-[20px] bg-[#232329]" style={{ transform: `translateZ(${-BT * f}px)` }} />
+        <div key={f} aria-hidden className="absolute inset-0 rounded-[20px] bg-[#232323]" style={{ transform: `translateZ(${-BT * f}px)` }} />
       ))}
       {/* top deck */}
-      <div className="absolute inset-0 rounded-[20px] bg-[linear-gradient(180deg,#3b3b45,#2b2b33)] shadow-[inset_0_1px_0_rgba(255,255,255,0.12)]">
+      <div className="absolute inset-0 rounded-[20px] bg-[linear-gradient(180deg,#3b3b3b,#2b2b2b)] shadow-[inset_0_1px_0_rgba(255,255,255,0.12)]">
         {/* keyboard */}
         <div className="absolute left-[7%] right-[7%] top-[9%] grid grid-cols-14 gap-[5px] rounded-lg bg-black/40 p-[8px]">
           {Array.from({ length: 14 * 5 }, (_, i) => (
-            <span key={i} className="h-[22px] rounded-[4px] bg-[#16161b] shadow-[inset_0_-1px_0_rgba(255,255,255,0.06)]" />
+            <span key={i} className="h-[22px] rounded-[4px] bg-[#161616] shadow-[inset_0_-1px_0_rgba(255,255,255,0.06)]" />
           ))}
         </div>
         {/* trackpad */}
@@ -253,15 +251,15 @@ function Base() {
 
 function Screen() {
   return (
-    <div className="relative h-full w-full overflow-hidden rounded-[6px] bg-[#0b0b10]">
+    <div className="relative h-full w-full overflow-hidden rounded-[6px] bg-[#0b0b0b]">
       {/* app bar */}
       <div className="flex h-8 items-center gap-2 border-b border-white/[0.07] px-3">
         {[0, 1, 2].map((i) => (
           <span key={i} className="h-2 w-2 rounded-full bg-white/15" />
         ))}
         <span className="ml-3 flex h-5 flex-1 items-center rounded-md bg-white/[0.05] px-2 font-mono text-[10px] text-muted">
-          <span className="mr-1.5 h-1.5 w-1.5 rounded-full bg-red" />
-          redant · brand scan — yourbrand.com
+          <span className="mr-1.5 h-1.5 w-1.5 rounded-full bg-accent" />
+          amoldo · brand scan — yourbrand.com
         </span>
       </div>
 
@@ -278,16 +276,16 @@ function Screen() {
                 </span>
                 <span className="text-[12px] text-text">{r.k}</span>
                 <span className="relative h-4 w-[150px] text-right font-mono text-[10px]">
-                  <span className={`lp-text-a absolute inset-0 ${r.ok ? "text-cyan/80" : "text-[#ff6b6b]"}`}>{r.a}</span>
-                  <span className="lp-text-b absolute inset-0 text-cyan/80 opacity-0">{r.b}</span>
+                  <span className={`lp-text-a absolute inset-0 ${r.ok ? "text-text/80" : "text-white/45"}`}>{r.a}</span>
+                  <span className="lp-text-b absolute inset-0 text-text/80 opacity-0">{r.b}</span>
                 </span>
               </li>
             ))}
           </ul>
           {/* scan line */}
           <div aria-hidden className="lp-scan pointer-events-none absolute inset-x-0 top-0 h-px">
-            <div className="absolute inset-x-0 -top-10 h-10 bg-gradient-to-b from-transparent to-red/15" />
-            <div className="absolute inset-x-0 top-0 h-[2px] bg-red-glow shadow-[0_0_14px_2px_rgba(255,45,45,0.7)]" />
+            <div className="absolute inset-x-0 -top-10 h-10 bg-gradient-to-b from-transparent to-accent/15" />
+            <div className="absolute inset-x-0 top-0 h-[2px] bg-accent shadow-[0_0_14px_2px_rgba(255,255,255,0.5)]" />
           </div>
         </div>
 
@@ -297,21 +295,21 @@ function Screen() {
           <div className="relative mt-3 h-[112px] w-[112px]">
             <svg viewBox="0 0 120 120" className="h-full w-full" aria-hidden>
               <circle cx="60" cy="60" r="50" fill="none" stroke="#ffffff" strokeOpacity="0.08" strokeWidth="8" />
-              <circle className="lp-ring" cx="60" cy="60" r="50" fill="none" stroke="#ff2d2d" strokeWidth="8" strokeLinecap="round" transform="rotate(-90 60 60)" />
+              <circle className="lp-ring" cx="60" cy="60" r="50" fill="none" stroke="#8a8a8a" strokeWidth="8" strokeLinecap="round" transform="rotate(-90 60 60)" />
             </svg>
             <p className="absolute inset-0 grid place-items-center">
               <span className="lp-score font-mono text-[30px] font-semibold text-text">0</span>
             </p>
           </div>
-          <div className="lp-ready mt-auto mb-4 w-full rounded-lg border border-cyan/40 bg-cyan/[0.08] px-2.5 py-2 text-center opacity-0">
-            <p className="hud text-[8.5px] text-cyan">Report ready</p>
+          <div className="lp-ready mt-auto mb-4 w-full rounded-lg border border-text/40 bg-text/[0.08] px-2.5 py-2 text-center opacity-0">
+            <p className="hud text-[8.5px] text-text">Report ready</p>
             <p className="mt-0.5 font-mono text-[10px] text-text">in 23h 41m</p>
           </div>
         </div>
       </div>
 
       {/* powered-off overlay */}
-      <div aria-hidden className="lp-off absolute inset-0 bg-[#050507]" />
+      <div aria-hidden className="lp-off absolute inset-0 bg-[#050505]" />
       {/* glass glare */}
       <div aria-hidden className="pointer-events-none absolute inset-0 bg-[linear-gradient(120deg,rgba(255,255,255,0.06),transparent_35%)]" />
     </div>
@@ -320,12 +318,12 @@ function Screen() {
 
 function Mark({ ok, cls }: { ok: boolean; cls: string }) {
   return ok ? (
-    <svg viewBox="0 0 16 16" className={`${cls} absolute inset-0 text-cyan`} aria-hidden>
+    <svg viewBox="0 0 16 16" className={`${cls} absolute inset-0 text-text`} aria-hidden>
       <circle cx="8" cy="8" r="7" fill="currentColor" fillOpacity="0.15" stroke="currentColor" strokeWidth="1" />
       <path d="m4.8 8.2 2.2 2.2 4.2-4.6" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
     </svg>
   ) : (
-    <svg viewBox="0 0 16 16" className={`${cls} absolute inset-0 text-red`} aria-hidden>
+    <svg viewBox="0 0 16 16" className={`${cls} absolute inset-0 text-muted`} aria-hidden>
       <circle cx="8" cy="8" r="7" fill="currentColor" fillOpacity="0.18" stroke="currentColor" strokeWidth="1" />
       <path d="M8 4.5v4.2M8 11v.4" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" />
     </svg>

@@ -140,10 +140,10 @@ export default function Technology() {
       id="technology"
       ref={root}
       aria-labelledby="tech-title"
-      data-theme="dark"
+      data-theme="light"
       className="relative flex h-[100svh] min-h-[560px] items-center overflow-hidden"
     >
-      <div aria-hidden className="pointer-events-none absolute right-[8%] top-1/2 h-[520px] w-[520px] -translate-y-1/2 rounded-full bg-red/[0.09] blur-[140px]" />
+      <div aria-hidden className="pointer-events-none absolute right-[8%] top-1/2 h-[520px] w-[520px] -translate-y-1/2 rounded-full bg-accent/[0.05] blur-[140px]" />
       <div aria-hidden className="dot-grid pointer-events-none absolute inset-0 opacity-40 [mask-image:radial-gradient(ellipse_50%_60%_at_70%_50%,#000,transparent)]" />
 
       <div className="relative mx-auto grid h-full w-full max-w-[1200px] grid-rows-[auto_1fr] gap-2 px-4 pb-10 pt-[72px] sm:px-8 md:grid-cols-[1fr_1.05fr] md:grid-rows-1 md:items-center md:gap-12 md:py-0">
@@ -160,17 +160,17 @@ export default function Technology() {
 
           <div className="relative mt-5 md:mt-8">
             <div aria-hidden className="absolute bottom-2 left-[5px] top-2 w-px bg-white/10">
-              <div className="trail-fill h-full w-full origin-top bg-gradient-to-b from-red to-cyan" />
+              <div className="trail-fill h-full w-full origin-top bg-gradient-to-b from-accent to-text" />
             </div>
             <ol className="space-y-1 md:space-y-2">
               {TECH_STAGES.map((s, i) => (
                 <li key={s.t} className="tstage group relative pl-7" data-active={i === 0 ? "" : undefined}>
                   <span
                     aria-hidden
-                    className="absolute left-0 top-[3px] h-[11px] w-[11px] rounded-full border border-white/25 bg-bg transition-all duration-300 group-data-[active]:border-red group-data-[active]:bg-red group-data-[active]:shadow-[0_0_12px_rgba(255,45,45,0.8)]"
+                    className="absolute left-0 top-[3px] h-[11px] w-[11px] rounded-full border border-white/25 bg-bg transition-all duration-300 group-data-[active]:border-accent group-data-[active]:bg-accent"
                   />
                   <p className="hud text-muted transition-colors duration-300 group-data-[active]:text-text">
-                    <span className="text-red/70">0{i + 1}</span> {s.t}
+                    <span className="text-accent/70">0{i + 1}</span> {s.t}
                   </p>
                   <div className="grid grid-rows-[0fr] opacity-0 transition-all duration-500 group-data-[active]:grid-rows-[1fr] group-data-[active]:opacity-100">
                     <p className="overflow-hidden text-[13px] leading-snug text-muted md:text-[14px]">
@@ -197,9 +197,9 @@ export default function Technology() {
               className={`tchip tchip-${c.s} glass absolute z-10 hidden rounded-lg px-3 py-2 md:block ${c.side === "l" ? "left-0 md:left-[2%]" : "right-0 md:right-[2%]"}`}
               style={{ top: c.top }}
             >
-              <p className={`hud text-[9px] ${c.s === 3 ? "text-cyan" : "text-red"}`}>{c.k}</p>
+              <p className={`hud text-[9px] ${c.s === 3 ? "text-text" : "text-accent"}`}>{c.k}</p>
               <p className="mt-0.5 flex items-center gap-1.5 whitespace-nowrap text-[12px] text-text md:text-[13px]">
-                <Check className="text-[#3ddc84]" />
+                <Check className="text-text" />
                 {c.t}
               </p>
             </div>
@@ -210,7 +210,7 @@ export default function Technology() {
           <div className="absolute inset-0 flex items-center justify-center [perspective:1400px]">
             <div ref={fit} className="relative shrink-0" style={{ width: W, height: H, transform: "scale(var(--fit, 1))", transformStyle: "preserve-3d" }}>
               {/* Ground shadow */}
-              <div aria-hidden className="absolute -bottom-10 left-1/2 h-10 w-[80%] -translate-x-1/2 rounded-[50%] bg-black/70 blur-xl" />
+              <div aria-hidden className="absolute -bottom-10 left-1/2 h-10 w-[80%] -translate-x-1/2 rounded-[50%] bg-black/25 blur-xl" />
 
               <div className="tphone absolute inset-0" style={{ transformStyle: "preserve-3d" }}>
                 {/* Body: rounded slices give the frame real thickness */}
@@ -224,7 +224,7 @@ export default function Technology() {
                       className="absolute inset-0 rounded-[44px]"
                       style={{
                         transform: `translateZ(${z}px)`,
-                        background: `linear-gradient(110deg, hsl(240 6% ${14 + mid * 10}%), hsl(240 6% ${8 + mid * 6}%) 45%, hsl(240 6% ${18 + mid * 12}%) 60%, hsl(240 6% ${9 + mid * 5}%))`,
+                        background: `linear-gradient(110deg, hsl(0 0% ${14 + mid * 10}%), hsl(0 0% ${8 + mid * 6}%) 45%, hsl(0 0% ${18 + mid * 12}%) 60%, hsl(0 0% ${9 + mid * 5}%))`,
                       }}
                     />
                   );
@@ -233,25 +233,27 @@ export default function Technology() {
                 {/* Back */}
                 <div
                   aria-hidden
-                  className="absolute inset-0 overflow-hidden rounded-[44px] border border-white/10 bg-[radial-gradient(120%_80%_at_30%_10%,#3a0d12,#120709_60%,#0a0a0e)] [backface-visibility:hidden]"
+                  data-theme="dark"
+                  className="absolute inset-0 overflow-hidden rounded-[44px] border border-white/10 bg-[radial-gradient(120%_80%_at_30%_10%,#2e2e2e,#111111_60%,#000000)] [backface-visibility:hidden]"
                   style={{ transform: `rotateY(180deg) translateZ(${DEPTH / 2 + 0.5}px)` }}
                 >
                   <div className="absolute left-5 top-5 grid h-[92px] w-[92px] grid-cols-2 gap-2 rounded-[26px] border border-white/10 bg-black/50 p-3">
                     {[0, 1, 2].map((k) => (
-                      <span key={k} className="rounded-full border-[3px] border-[#222] bg-[radial-gradient(circle_at_35%_35%,#30303c,#050508)]" />
+                      <span key={k} className="rounded-full border-[3px] border-[#222] bg-[radial-gradient(circle_at_35%_35%,#333333,#050505)]" />
                     ))}
                   </div>
                   {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src="/brand/redant-icon.svg" alt="" className="absolute left-1/2 top-1/2 w-16 -translate-x-1/2 -translate-y-1/2 opacity-90" />
-                  <p className="hud absolute bottom-10 w-full text-center text-[9px] text-white/40">Built by Red Ant</p>
+                  <img src="/brand/amoldo-icon-white.svg" alt="" className="absolute left-1/2 top-1/2 w-16 -translate-x-1/2 -translate-y-1/2 opacity-90" />
+                  <p className="hud absolute bottom-10 w-full text-center text-[9px] text-white/40">Built by Amoldo</p>
                 </div>
 
                 {/* Front: bezel + screen */}
                 <div
+                  data-theme="dark"
                   className="absolute inset-0 rounded-[44px] bg-black p-[9px] shadow-[inset_0_0_0_1.5px_rgba(255,255,255,0.12)] [backface-visibility:hidden]"
                   style={{ transform: `translateZ(${DEPTH / 2 + 0.5}px)` }}
                 >
-                  <div className="relative h-full w-full overflow-hidden rounded-[36px] bg-[#0a0a0f]">
+                  <div className="relative h-full w-full overflow-hidden rounded-[36px] bg-[#0a0a0a]">
                     <StatusBar />
                     <ScreenScope />
                     <ScreenBuild />
@@ -315,7 +317,7 @@ function ScreenScope() {
 
 function ScreenBuild() {
   return (
-    <div className="tscreen absolute inset-0 bg-[#0d0d12]">
+    <div className="tscreen absolute inset-0 bg-[#0a0a0a]">
       <div className="bd-in flex items-center justify-between px-4 pt-11">
         <span className="font-mono text-[11px] font-semibold tracking-tight text-text">aurum.</span>
         <span className="flex flex-col gap-[3px]">
@@ -323,17 +325,17 @@ function ScreenBuild() {
           <span className="h-px w-4 bg-white/70" />
         </span>
       </div>
-      <div className="bd-in relative mx-3 mt-3 h-[170px] overflow-hidden rounded-2xl bg-[radial-gradient(120%_90%_at_80%_0%,#ff4d4d,#b3001b_45%,#2a0508)] p-4">
-        <span className="absolute -bottom-6 -right-4 h-28 w-28 rounded-full bg-[radial-gradient(circle_at_35%_30%,#ffd2c2,#ff6b4d_40%,#7a0612)] shadow-[0_10px_30px_rgba(0,0,0,0.5)]" />
-        <p className="hud text-[8px] text-white/80">New season</p>
-        <p className="mt-1 max-w-[60%] font-mono text-[18px] font-semibold leading-[1.05] tracking-tight text-white">Glow that lasts all day</p>
-        <span className="mt-3 inline-block rounded-full bg-white px-3 py-1.5 text-[10px] font-semibold text-black">Shop now</span>
+      <div className="bd-in relative mx-3 mt-3 h-[170px] overflow-hidden rounded-2xl bg-[radial-gradient(120%_90%_at_80%_0%,#ffffff,#e6e6e6_55%,#cfcfcf)] p-4">
+        <span className="absolute -bottom-6 -right-4 h-28 w-28 rounded-full bg-[radial-gradient(circle_at_35%_30%,#5a5a5a,#1a1a1a_45%,#000000)] shadow-[0_10px_30px_rgba(0,0,0,0.35)]" />
+        <p className="hud text-[8px] text-black/60">New season</p>
+        <p className="mt-1 max-w-[60%] font-mono text-[18px] font-semibold leading-[1.05] tracking-tight text-black">Glow that lasts all day</p>
+        <span className="mt-3 inline-block rounded-full bg-black px-3 py-1.5 text-[10px] font-semibold text-[#fff]">Shop now</span>
       </div>
       <p className="bd-in hud mt-4 px-4 text-[8px] text-muted">Bestsellers</p>
       <div className="bd-in mt-2 grid grid-cols-2 gap-2 px-3">
         {[
-          ["Day serum", "₹1,299", "#ffb59e"],
-          ["Night balm", "₹999", "#c9b6ff"],
+          ["Day serum", "₹1,299", "#e6e6e6"],
+          ["Night balm", "₹999", "#a6a6a6"],
         ].map(([n, p, c]) => (
           <div key={n} className="rounded-xl border border-white/10 bg-white/[0.03] p-2">
             <div className="grid h-[70px] place-items-center rounded-lg bg-white/[0.04]">
@@ -344,9 +346,9 @@ function ScreenBuild() {
           </div>
         ))}
       </div>
-      <div className="bd-in mx-3 mt-3 flex items-center justify-between rounded-xl border border-red/40 bg-red/10 px-3 py-2.5">
+      <div className="bd-in mx-3 mt-3 flex items-center justify-between rounded-xl border border-accent/40 bg-accent/10 px-3 py-2.5">
         <span className="text-[10px] text-text">Get 10% off your first order</span>
-        <span className="text-[10px] text-red">→</span>
+        <span className="text-[10px] text-accent">→</span>
       </div>
     </div>
   );
@@ -354,11 +356,11 @@ function ScreenBuild() {
 
 function ScreenConnect() {
   return (
-    <div className="tscreen absolute inset-0 bg-[#0d0d12] px-4 pt-12">
+    <div className="tscreen absolute inset-0 bg-[#0a0a0a] px-4 pt-12">
       <p className="hud text-[9px] text-muted">Checkout</p>
       <div className="mt-3 flex items-center gap-3 rounded-xl border border-white/10 bg-white/[0.03] p-2.5">
         <span className="grid h-12 w-10 place-items-center rounded-md bg-white/[0.05]">
-          <span className="h-8 w-4 rounded-sm bg-[linear-gradient(#ffb59e,#333)]" />
+          <span className="h-8 w-4 rounded-sm bg-[linear-gradient(#e6e6e6,#333)]" />
         </span>
         <div className="flex-1">
           <p className="text-[11px] text-text">Day serum × 2</p>
@@ -377,10 +379,10 @@ function ScreenConnect() {
       </div>
 
       <div className="relative mt-4 h-11">
-        <span className="pay-btn absolute inset-0 grid place-items-center rounded-xl bg-red text-[12px] font-semibold text-white shadow-[0_8px_24px_rgba(255,45,45,0.4)]">
+        <span className="pay-btn absolute inset-0 grid place-items-center rounded-xl bg-accent text-[12px] font-semibold text-on-accent">
           Pay ₹2,598
         </span>
-        <span className="pay-ok absolute inset-0 flex items-center justify-center gap-2 rounded-xl border border-[#3ddc84]/50 bg-[#0f2a1c] text-[12px] font-semibold text-[#3ddc84] opacity-0">
+        <span className="pay-ok absolute inset-0 flex items-center justify-center gap-2 rounded-xl border border-white/50 bg-white/10 text-[12px] font-semibold text-white opacity-0">
           <Check /> Payment successful
         </span>
       </div>
@@ -394,12 +396,12 @@ function ScreenConnect() {
           ["GA4", "purchase event"],
           ["WhatsApp", "order update sent"],
         ].map(([a, b]) => (
-          <li key={a} className="int-row flex items-center justify-between rounded-lg border border-cyan/20 bg-cyan/[0.05] px-2.5 py-1.5">
+          <li key={a} className="int-row flex items-center justify-between rounded-lg border border-text/20 bg-text/[0.05] px-2.5 py-1.5">
             <span className="flex items-center gap-1.5 text-[10px] text-text">
-              <span className="h-1.5 w-1.5 rounded-full bg-cyan shadow-[0_0_6px_#4de1ff]" />
+              <span className="h-1.5 w-1.5 rounded-full bg-text" />
               {a}
             </span>
-            <span className="font-mono text-[8.5px] text-cyan/80">{b}</span>
+            <span className="font-mono text-[8.5px] text-text/80">{b}</span>
           </li>
         ))}
       </ul>
@@ -409,11 +411,11 @@ function ScreenConnect() {
 
 function ScreenSupport() {
   return (
-    <div className="tscreen absolute inset-0 bg-[#0b0d11] px-4 pt-12">
+    <div className="tscreen absolute inset-0 bg-[#0a0a0a] px-4 pt-12">
       <div className="flex items-center justify-between">
-        <p className="hud text-[9px] text-cyan">Support desk</p>
-        <span className="flex items-center gap-1.5 font-mono text-[9px] text-[#3ddc84]">
-          <span className="tech-live h-1.5 w-1.5 rounded-full bg-[#3ddc84]" /> All normal
+        <p className="hud text-[9px] text-text">Support desk</p>
+        <span className="flex items-center gap-1.5 font-mono text-[9px] text-text">
+          <span className="tech-live h-1.5 w-1.5 rounded-full bg-text" /> All normal
         </span>
       </div>
       <div className="mt-3 rounded-xl border border-white/10 bg-white/[0.03] p-3">
@@ -425,8 +427,8 @@ function ScreenSupport() {
           <p className="font-mono text-[9px] text-muted">avg 0.8s load</p>
         </div>
         <svg viewBox="0 0 200 50" className="mt-2 w-full" aria-hidden>
-          <path d="M0 50 V30 L20 26 L40 28 L60 20 L80 24 L100 14 L120 18 L140 10 L160 14 L180 6 L200 8 V50Z" fill="rgba(77,225,255,0.08)" />
-          <path className="up-line" d="M0 30 L20 26 L40 28 L60 20 L80 24 L100 14 L120 18 L140 10 L160 14 L180 6 L200 8" fill="none" stroke="#4de1ff" strokeWidth="1.6" />
+          <path d="M0 50 V30 L20 26 L40 28 L60 20 L80 24 L100 14 L120 18 L140 10 L160 14 L180 6 L200 8 V50Z" fill="rgba(255,255,255,0.08)" />
+          <path className="up-line" d="M0 30 L20 26 L40 28 L60 20 L80 24 L100 14 L120 18 L140 10 L160 14 L180 6 L200 8" fill="none" stroke="#ffffff" strokeWidth="1.6" />
         </svg>
       </div>
       <p className="hud mt-4 text-[8px] text-muted">Resolved this week</p>
@@ -439,16 +441,16 @@ function ScreenSupport() {
         ].map(([a, b]) => (
           <li key={a} className="tk-row flex items-center justify-between rounded-lg border border-white/10 bg-white/[0.03] px-2.5 py-2">
             <span className="flex items-center gap-1.5 text-[10px] text-text">
-              <Check className="text-[#3ddc84]" /> {a}
+              <Check className="text-text" /> {a}
             </span>
             <span className="font-mono text-[9px] text-muted">{b}</span>
           </li>
         ))}
       </ul>
-      <div className="mt-3 flex items-center gap-2 rounded-xl border border-red/30 bg-red/10 px-3 py-2.5">
-        <span className="grid h-6 w-6 place-items-center rounded-full bg-red text-[10px] font-bold text-white">R</span>
+      <div className="mt-3 flex items-center gap-2 rounded-xl border border-accent/30 bg-accent/10 px-3 py-2.5">
+        <span className="grid h-6 w-6 place-items-center rounded-full bg-accent text-[10px] font-bold text-on-accent">R</span>
         <p className="text-[10px] leading-tight text-text">
-          Red Ant tech team
+          Amoldo tech team
           <span className="block text-muted">Replies in under 2 hrs</span>
         </p>
       </div>

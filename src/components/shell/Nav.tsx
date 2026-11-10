@@ -23,12 +23,12 @@ export default function Nav() {
       }`}
     >
       <nav aria-label="Main" className="mx-auto flex h-16 max-w-[1400px] items-center justify-between px-4 sm:h-20 sm:px-8 lg:grid lg:grid-cols-[1fr_auto_1fr]">
-        <a href="#top" aria-label="Red Ant Media — home" className="shrink-0 justify-self-start">
+        <a href="#top" aria-label="Amoldo Technologies — home" className="shrink-0 justify-self-start">
           <span className="logo-swap">
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/brand/redant-logo-light.svg" alt="Red Ant Media" width={909} height={333} className="logo-on-dark h-8 w-auto sm:h-10" />
+            <img src="/brand/amoldo-logo-white.svg" alt="Amoldo Technologies" width={3764} height={1076} className="logo-on-dark h-10 w-auto sm:h-11" />
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/brand/redant-logo-dark.svg" alt="" aria-hidden width={909} height={333} className="logo-on-light h-8 w-auto sm:h-10" />
+            <img src="/brand/amoldo-logo-black.svg" alt="" aria-hidden width={3764} height={1076} className="logo-on-light h-10 w-auto sm:h-11" />
           </span>
         </a>
 
@@ -43,7 +43,7 @@ export default function Nav() {
         </ul>
 
         <div className="flex items-center gap-2 justify-self-end">
-          <AssessLink className="btn btn-red hidden h-10 px-4 text-sm sm:inline-flex" />
+          <AssessLink className="btn btn-accent hidden h-10 px-4 text-sm sm:inline-flex" />
           <button
             type="button"
             aria-label="Menu"
@@ -71,7 +71,7 @@ export default function Nav() {
             ))}
           </ul>
           <div className="mt-5">
-            <AssessLink className="btn btn-red w-full" onClick={() => setMenu(false)} />
+            <AssessLink className="btn btn-accent w-full" onClick={() => setMenu(false)} />
           </div>
         </div>
       )}

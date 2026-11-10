@@ -1,13 +1,13 @@
 /**
- * Hero particle field. Like the Colony, its state is a pure function of
+ * Hero particle field. Its state is a pure function of
  * `progress` (0..1) so scrubbing back rewinds it exactly.
  *
  *   0.00–0.24  dust drifts, then converges onto the logo (sampled from its pixels)
  *   0.24–0.32  particles dim as the vector logo takes over
- *   0.40–0.58  warp: streaks fly out of the ant's eye while the camera dives in
+ *   0.40–0.58  warp: streaks fly out of the A mark's dot while the camera dives in
  *   0.62–1.00  faint ambient dust returns behind the tagline
  */
-import { loadLogoSamples } from "./colony";
+import { loadLogoSamples } from "./logoSamples";
 
 type Rect = { x: number; y: number; w: number; h: number };
 
@@ -123,7 +123,7 @@ export class HeroField {
     const p = this.progress;
     ctx.setTransform(this.dpr, 0, 0, this.dpr, 0, 0);
     ctx.clearRect(0, 0, w, h);
-    ctx.globalCompositeOperation = "lighter";
+    ctx.globalCompositeOperation = "source-over";
 
     const gather = p < 0.36;
     const fadeLogo = 1 - win(p, 0.24, 0.32);
@@ -163,7 +163,7 @@ export class HeroField {
         const a = (0.18 + 0.32 * tw) * (1 - lt) + (0.55 + 0.35 * tw) * lt;
         const alpha = a * (lt > 0 ? fadeLogo : 1) * (0.5 + 0.5 * fadeLogo);
         if (alpha < 0.01) continue;
-        ctx.fillStyle = red ? `rgba(255,45,45,${alpha})` : `rgba(242,242,245,${alpha})`;
+        ctx.fillStyle = red ? `rgba(0,0,0,${alpha})` : `rgba(70,70,70,${alpha})`;
         const z = this.sz[i] * (lt > 0.9 ? 1.1 : 1);
         ctx.fillRect(x - z / 2, y - z / 2, z, z);
         continue;
@@ -180,7 +180,7 @@ export class HeroField {
         const x1 = this.eye.x + cx * r;
         const y1 = this.eye.y + cy * r;
         const al = warpA * (0.25 + 0.6 * this.r0[i]);
-        ctx.strokeStyle = i % 3 ? `rgba(255,60,60,${al})` : `rgba(255,235,235,${al})`;
+        ctx.strokeStyle = i % 3 ? `rgba(0,0,0,${al})` : `rgba(150,150,150,${al})`;
         ctx.lineWidth = this.sz[i] * 0.8;
         ctx.beginPath();
         ctx.moveTo(x1 - cx * len, y1 - cy * len);
@@ -191,7 +191,7 @@ export class HeroField {
 
       if (after > 0.01 && i % 2 === 0) {
         const alpha = after * (0.08 + 0.22 * tw);
-        ctx.fillStyle = i % 4 ? `rgba(255,45,45,${alpha})` : `rgba(242,242,245,${alpha})`;
+        ctx.fillStyle = i % 4 ? `rgba(0,0,0,${alpha})` : `rgba(150,150,150,${alpha})`;
         const z = this.sz[i] * 0.9;
         ctx.fillRect(dx - z / 2, dy - z / 2, z, z);
       }

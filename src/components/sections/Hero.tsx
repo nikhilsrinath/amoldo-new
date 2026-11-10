@@ -3,25 +3,25 @@
 import { useRef } from "react";
 import { gsap, useGSAP, ScrollTrigger, MM, sceneTimeline } from "@/lib/gsap";
 import { HeroField } from "@/lib/heroField";
-import { ANT, EYE, LETTERS, LOGO_VIEWBOX } from "@/lib/logoPaths";
+import { MARK, EYE, LETTERS, LOGO_VIEWBOX } from "@/lib/logoPaths";
 import { HERO_LINE } from "@/lib/content";
 
 /**
  * Hero — a single scroll-driven shot, no copy until the end.
  *
- *   idle      one red dot breathes in the dark (the ant's eye)
- *   gather    dust condenses into the logo; the ant traces itself, the wordmark settles
- *   dive      the camera dives into the eye — warp streaks — the screen goes red
- *   speak     the red contracts back into a dot that walks out the line,
+ *   idle      one black dot breathes on white (inside the A mark)
+ *   gather    dust condenses into the logo; the A traces itself, the wordmark settles
+ *   dive      the camera dives into the dot — warp streaks — the screen goes black
+ *   speak     the black contracts back into a dot that walks out the line,
  *             word by word, and comes to rest as its full stop
  */
 
-const BRAND_RED = "#FF0000";
+const BRAND_INK = "#000000";
 const EYE_X = (EYE.cx / LOGO_VIEWBOX.w) * 100;
 const EYE_Y = (EYE.cy / LOGO_VIEWBOX.h) * 100;
 const EYE_D = ((EYE.r * 2) / LOGO_VIEWBOX.w) * 100;
-// Wordmark settles outward from the ant.
-const LETTER_ORDER = ["d", "n", "e", "t", "r", "media"];
+// Wordmark settles left to right from the A, then the TECHNOLOGIES line.
+const LETTER_ORDER = ["m", "o1", "l", "d", "o2", "tech"];
 
 type Pt = { x: number; y: number };
 
@@ -122,7 +122,7 @@ export default function Hero() {
         const words = q(".wi");
         const letter = (id: string) => q(`.letter[data-id="${id}"]`);
 
-        gsap.set(q(".ant"), { drawSVG: "0%" });
+        gsap.set(q(".mark"), { drawSVG: "0%" });
 
         const tl = sceneTimeline(sec, { end: mobile ? "+=380%" : "+=520%", scrub: 1 });
         tl.to(
@@ -142,15 +142,15 @@ export default function Hero() {
         )
           .to(q(".cue"), { autoAlpha: 0, duration: 0.03 }, 0)
 
-          // ── gather: the ant traces itself, then the wordmark settles ──
-          .to(q(".ant"), { drawSVG: "100%", duration: 0.16, ease: "power1.inOut" }, 0.05)
-          .to(q(".ant"), { fillOpacity: 1, duration: 0.06 }, 0.18)
-          .to(q(".ant"), { strokeOpacity: 0, duration: 0.04 }, 0.22)
+          // ── gather: the A traces itself, then the wordmark settles ──
+          .to(q(".mark"), { drawSVG: "100%", duration: 0.16, ease: "power1.inOut" }, 0.05)
+          .to(q(".mark"), { fillOpacity: 1, duration: 0.06 }, 0.18)
+          .to(q(".mark"), { strokeOpacity: 0, duration: 0.04 }, 0.22)
           .to(q(".glow"), { opacity: 1, scale: 1, duration: 0.14, ease: "power2.out" }, 0.16);
         LETTER_ORDER.forEach((id, k) => {
           tl.fromTo(
             letter(id),
-            { opacity: 0, y: id === "media" ? 18 : 30, transformOrigin: "50% 100%" },
+            { opacity: 0, y: id === "tech" ? 18 : 30, transformOrigin: "50% 100%" },
             { opacity: 1, y: 0, duration: 0.07, ease: "power3.out" },
             0.2 + k * 0.022,
           );
@@ -162,7 +162,7 @@ export default function Hero() {
           .set(logo.current, { autoAlpha: 0 }, 0.58)
           .set(orb.current, { autoAlpha: 1, x: () => geo.eye.x - geo.d / 2, y: () => geo.eye.y - geo.d / 2, scale: () => geo.big }, 0.58)
 
-          // ── speak: the red closes into a dot, then walks the line ──
+          // ── speak: the black closes into a dot, then walks the line ──
           .to(orb.current, { ...at(0), scale: 1, duration: 0.1, ease: "expo.out" }, 0.585);
 
         // Words rise in on compositor-only properties (opacity + translate on a
@@ -199,7 +199,7 @@ export default function Hero() {
       id="top"
       ref={root}
       data-phase="idle"
-      data-theme="dark"
+      data-theme="light"
       aria-labelledby="hero-title"
       className="hero relative h-svh min-h-[560px] overflow-hidden"
     >
@@ -207,7 +207,7 @@ export default function Hero() {
       <div
         aria-hidden
         className="glow pointer-events-none absolute h-[70vmax] w-[70vmax] -translate-x-1/2 -translate-y-1/2 scale-75 rounded-full opacity-0"
-        style={{ background: "radial-gradient(closest-side, rgba(255,0,0,0.16), rgba(255,0,0,0.04) 55%, transparent)" }}
+        style={{ background: "radial-gradient(closest-side, rgba(0,0,0,0.07), rgba(0,0,0,0.02) 55%, transparent)" }}
       />
 
       {/* the logo, built from its own vector paths */}
@@ -219,17 +219,17 @@ export default function Hero() {
       >
         <svg viewBox={`0 0 ${LOGO_VIEWBOX.w} ${LOGO_VIEWBOX.h}`} className="block h-auto w-full overflow-visible">
           <path
-            className="ant"
-            d={ANT}
-            fill={BRAND_RED}
+            className="mark"
+            d={MARK}
+            fill={BRAND_INK}
             fillRule="evenodd"
-            stroke={BRAND_RED}
+            stroke={BRAND_INK}
             strokeWidth={1.5}
             vectorEffect="non-scaling-stroke"
             style={{ fillOpacity: 0, strokeDasharray: "0 100000" }}
           />
           {LETTERS.map((l) => (
-            <path key={l.id} className="letter" data-id={l.id} d={l.d} fill="#fff" fillRule="evenodd" opacity={0} />
+            <path key={l.id} className="letter" data-id={l.id} d={l.d} fill={BRAND_INK} fillRule="evenodd" opacity={0} />
           ))}
         </svg>
         <span
@@ -240,7 +240,7 @@ export default function Hero() {
             width: `${EYE_D}%`,
             aspectRatio: "1",
             translate: "-50% -50%",
-            background: BRAND_RED,
+            background: BRAND_INK,
           }}
         >
           <span className="pulse-ring" />
@@ -280,12 +280,12 @@ export default function Hero() {
         ))}
       </h1>
 
-      {/* the eye, again: full-screen red that closes into the full stop */}
+      {/* the eye, again: full-screen black that closes into the full stop */}
       <div
         ref={orb}
         aria-hidden
         className="orb invisible pointer-events-none absolute left-0 top-0 rounded-full will-change-transform"
-        style={{ background: BRAND_RED }}
+        style={{ background: BRAND_INK }}
       >
         <span className="pulse-ring" />
       </div>
@@ -293,7 +293,7 @@ export default function Hero() {
       {/* wordless scroll cue */}
       <div aria-hidden className="cue absolute bottom-8 left-1/2 -translate-x-1/2">
         <span className="relative block h-12 w-px overflow-hidden bg-white/15">
-          <span className="absolute inset-x-0 top-0 h-1/2 animate-[scrollhint_1.8s_ease-in-out_infinite] bg-red" />
+          <span className="absolute inset-x-0 top-0 h-1/2 animate-[scrollhint_1.8s_ease-in-out_infinite] bg-accent" />
         </span>
       </div>
     </section>

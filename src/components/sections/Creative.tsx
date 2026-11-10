@@ -200,7 +200,7 @@ export default function Creative() {
                 <span className="cr-line block">Creative that carries</span>
               </span>
               <span className="block overflow-hidden pb-[0.06em]">
-                <span className="cr-line block text-red">your strategy.</span>
+                <span className="cr-line block text-accent">your strategy.</span>
               </span>
             </h2>
           </div>
@@ -224,7 +224,7 @@ export default function Creative() {
             {/* Meta row */}
             <div className="mt-16 flex items-center gap-4 md:mt-24">
               <p className="hud shrink-0 text-muted">
-                <span className="text-red">●</span> Selected work
+                <span className="text-accent">●</span> Selected work
               </p>
               <span aria-hidden className="cr-rule h-px flex-1 origin-left bg-white/15" />
               <p className="hud shrink-0 text-muted">
@@ -261,7 +261,7 @@ export default function Creative() {
                         ) : (
                           <Image
                             src={item.src}
-                            alt={`${item.client} ${item.kind.toLowerCase()} by Red Ant Media`}
+                            alt={`${item.client} ${item.kind.toLowerCase()} by Amoldo Technologies`}
                             fill
                             sizes={sizes}
                             className="object-cover"
@@ -275,7 +275,7 @@ export default function Creative() {
                     <div data-theme="dark" className="pointer-events-none absolute inset-0 z-10 transition-opacity duration-500 [@media(hover:hover)]:opacity-0 [@media(hover:hover)]:group-hover:opacity-100 [@media(hover:hover)]:group-focus-within:opacity-100">
                       <div aria-hidden className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-black/60 to-transparent" />
                       <div className="cr-chip absolute bottom-3 left-3 flex items-center gap-2.5 rounded-full border border-white/10 bg-black/65 py-1.5 pl-1.5 pr-3.5 backdrop-blur-md sm:bottom-4 sm:left-4">
-                        <span className="hud grid h-6 min-w-6 place-items-center rounded-full bg-red px-1.5 !tracking-normal text-white">
+                        <span className="hud grid h-6 min-w-6 place-items-center rounded-full bg-accent px-1.5 !tracking-normal text-on-accent">
                           {pad(i + 1)}
                         </span>
                         <span className="text-sm font-medium text-white">{item.client}</span>
