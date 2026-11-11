@@ -111,7 +111,7 @@ export default function Hero() {
           field.progress = 1;
           html.removeAttribute("data-intro");
           sec.dataset.phase = "done";
-          gsap.set(logo.current, { autoAlpha: 0 });
+          gsap.set([logo.current, q(".cue")], { autoAlpha: 0 });
           gsap.set(q(".wi"), { opacity: 1 });
           gsap.set(orb.current, { autoAlpha: 1, ...at(geo.stops.length - 1) });
           return;
@@ -290,9 +290,13 @@ export default function Hero() {
         <span className="pulse-ring" />
       </div>
 
-      {/* wordless scroll cue */}
-      <div aria-hidden className="cue absolute bottom-8 left-1/2 -translate-x-1/2">
-        <span className="relative block h-12 w-px overflow-hidden bg-white/15">
+      {/* scroll cue: tells first-time visitors the page starts on scroll */}
+      <div className="cue pointer-events-none absolute inset-x-0 bottom-7 flex flex-col items-center gap-4 px-4 text-center sm:bottom-9">
+        <p className="display text-[clamp(1.05rem,2.2vw,1.5rem)] font-medium text-text">
+          Scroll to begin
+        </p>
+        <p className="hud -mt-2 text-muted">Watch the brand take shape</p>
+        <span aria-hidden className="relative block h-12 w-px overflow-hidden bg-black/15">
           <span className="absolute inset-x-0 top-0 h-1/2 animate-[scrollhint_1.8s_ease-in-out_infinite] bg-accent" />
         </span>
       </div>

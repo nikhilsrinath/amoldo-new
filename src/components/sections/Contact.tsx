@@ -33,10 +33,7 @@ export default function Contact() {
             </div>
             <dl className="mt-12 grid gap-5 text-sm">
               {[
-                ["Email", <a key="e" href={`mailto:${CONTACT.email}`} className="hover:text-accent">{CONTACT.email}</a>],
-                ["LinkedIn", <a key="l" href={CONTACT.linkedin} target="_blank" rel="noopener noreferrer" className="hover:text-accent">linkedin.com/company/14556495</a>],
-                ["Web", <a key="w" href={CONTACT.websiteUrl} className="hover:text-accent">{CONTACT.website}</a>],
-                ["Location", CONTACT.location],
+                ["Email", <a key="e" href={`mailto:${CONTACT.email}`} className="hover:text-accent">{CONTACT.email}</a>],                ["Location", CONTACT.location],
               ].map(([k, v]) => (
                 <div key={k as string} className="grid grid-cols-[84px_minmax(0,1fr)] items-baseline border-b border-white/5 pb-4 sm:grid-cols-[96px_minmax(0,1fr)]">
                   <dt className="hud text-muted">{k}</dt>

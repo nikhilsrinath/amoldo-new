@@ -1,6 +1,11 @@
 import type { Metadata, Viewport } from "next";
 import { IBM_Plex_Mono, Inter } from "next/font/google";
 import "./globals.css";
+import { CONTACT } from "@/lib/content";
+
+// Public site URL, set NEXT_PUBLIC_SITE_URL at deploy time. Absolute URLs in the
+// metadata and structured data are only emitted when it is known.
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, "");
 
 // Main typeface: IBM Plex Mono (headings, UI, labels). Paragraphs: Inter, normal weight.
 const plex = IBM_Plex_Mono({
@@ -14,7 +19,7 @@ const inter = Inter({ variable: "--font-inter", subsets: ["latin"], weight: ["40
 export const viewport: Viewport = { themeColor: "#FFFFFF" };
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://www.redantmedia.co.in"),
+  ...(SITE_URL && { metadataBase: new URL(SITE_URL), alternates: { canonical: SITE_URL } }),
   title: "Amoldo Technologies — Digital Marketing & Brand Growth Company | Chennai",
   description:
     "Building stronger brands. Creating digital demand. Driving measurable growth. Amoldo Technologies is a Chennai-based digital marketing and brand growth company operating since 2016.",
@@ -28,14 +33,11 @@ export const metadata: Metadata = {
     "Online Reputation Management",
     "Content Marketing India",
   ],
-  alternates: {
-    canonical: "https://www.redantmedia.co.in",
-  },
   openGraph: {
     title: "Amoldo Technologies — Building Stronger Brands & Digital Demand",
     description:
       "Chennai-based digital marketing and brand growth company since 2016. Strategy, SEO, SEM, social media, content, creative communication and ORM.",
-    url: "https://www.redantmedia.co.in",
+    ...(SITE_URL && { url: SITE_URL }),
     siteName: "Amoldo Technologies",
     locale: "en_IN",
     type: "website",
@@ -62,31 +64,34 @@ const jsonLd = {
   "@graph": [
     {
       "@type": "Organization",
-      "@id": "https://www.redantmedia.co.in/#organization",
+      ...(SITE_URL && {
+        "@id": `${SITE_URL}/#organization`,
+        url: SITE_URL,
+        logo: `${SITE_URL}/brand/amoldo-logo-black.svg`,
+      }),
       name: "Amoldo Technologies",
-      url: "https://www.redantmedia.co.in",
-      logo: "https://www.redantmedia.co.in/brand/amoldo-logo-black.svg",
       foundingDate: "2016",
       description:
         "Chennai-based digital marketing and brand growth company helping businesses strengthen market positioning, reach the right audiences, build credibility and turn digital attention into business opportunities.",
       slogan:
         "Building stronger brands. Creating digital demand. Driving measurable growth.",
-      email: "info@redantmedia.co.in",
+      email: CONTACT.email,
       address: {
         "@type": "PostalAddress",
         addressLocality: "Chennai",
         addressRegion: "Tamil Nadu",
         addressCountry: "IN",
       },
-      sameAs: ["https://www.linkedin.com/company/14556495"],
     },
     {
       "@type": "ProfessionalService",
-      "@id": "https://www.redantmedia.co.in/#business",
+      ...(SITE_URL && {
+        "@id": `${SITE_URL}/#business`,
+        url: SITE_URL,
+        image: `${SITE_URL}/brand/amoldo-icon-512.png`,
+      }),
       name: "Amoldo Technologies",
-      url: "https://www.redantmedia.co.in",
-      image: "https://www.redantmedia.co.in/brand/amoldo-icon-512.png",
-      email: "info@redantmedia.co.in",
+      email: CONTACT.email,
       foundingDate: "2016",
       address: {
         "@type": "PostalAddress",

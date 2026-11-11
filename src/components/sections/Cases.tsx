@@ -93,7 +93,7 @@ export default function Cases() {
       <div className="mx-auto max-w-[1400px] px-4 sm:px-8">
         <div className="work-head flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
           <div>
-            <Index n="08" label="Selected experience" />
+            <Index n="06" label="Selected experience" />
             <h2 id="work-title" className="display mt-4 text-[clamp(2rem,4vw,3.6rem)]">
               Work that <span className="text-accent">speaks for itself.</span>
             </h2>

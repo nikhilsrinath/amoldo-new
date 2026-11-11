@@ -13,5 +13,3 @@ Vector versions traced from the supplied Amoldo Technologies logo artwork.
 
 The hero builds the logo from the same paths in `src/lib/logoPaths.ts`.
 The favicon, `icon.svg` and `apple-icon.png` in `src/app` use the "A" mark, white on a black rounded square.
-
-The `redant-*` files in this folder are the previous brand and are no longer referenced.

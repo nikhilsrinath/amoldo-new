@@ -176,7 +176,7 @@ export default function Process() {
   return (
     <section id="process" data-theme="light" ref={root} aria-labelledby="process-title" className="relative flex h-svh min-h-[600px] flex-col overflow-hidden">
       <div className="relative mx-auto w-full max-w-[1400px] px-4 pt-20 sm:px-8 md:pt-28">
-        <Index n="07" label="How we work" />
+        <Index n="08" label="How we work" />
         <h2 id="process-title" className="display mt-3 text-[clamp(1.8rem,4vw,3.6rem)] md:mt-4">
           One path. <span className="text-accent">Always improving.</span>
         </h2>

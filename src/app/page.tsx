@@ -28,9 +28,9 @@ export default function HomePage() {
         <GrowthEngine />
         <Services />
         <Creative />
+        <Cases />
         <Technology />
         <Process />
-        <Cases />
         <Assessment />
         <Contact />
       </main>

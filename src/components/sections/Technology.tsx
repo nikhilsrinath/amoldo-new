@@ -149,7 +149,7 @@ export default function Technology() {
       <div className="relative mx-auto grid h-full w-full max-w-[1200px] grid-rows-[auto_1fr] gap-2 px-4 pb-10 pt-[72px] sm:px-8 md:grid-cols-[1fr_1.05fr] md:grid-rows-1 md:items-center md:gap-12 md:py-0">
         {/* Copy + stage list */}
         <div>
-          <Index n="06" label="Technology, when needed" />
+          <Index n="07" label="Technology, when needed" />
           <h2 id="tech-title" className="display mt-4 text-[clamp(1.4rem,2.8vw,2.6rem)] leading-tight">
             We don&apos;t lead with technology. <span className="text-muted">We lead with your objective.</span>
           </h2>

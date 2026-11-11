@@ -1,14 +1,10 @@
 /**
  * Single source of truth for site copy and data.
- * Facts come from Red_Ant_Media_Digital_Marketing_Profile.md — do not add
- * invented results, people, phone numbers or addresses.
+ * Do not add invented results, people, phone numbers or addresses.
  */
 
 export const CONTACT = {
-  email: "info@redantmedia.co.in",
-  website: "www.redantmedia.co.in",
-  websiteUrl: "https://www.redantmedia.co.in",
-  linkedin: "https://www.linkedin.com/company/14556495",
+  email: "amoldotechnologies@gmail.com",
   location: "Chennai, Tamil Nadu, India",
 };
 
@@ -248,7 +244,7 @@ export const ASSESSMENT_ITEMS = [
 
 export const NAV_LINKS = [
   { href: "#services", label: "Services" },
-  { href: "#process", label: "Process" },
   { href: "#work", label: "Work" },
+  { href: "#process", label: "Process" },
   { href: "#contact", label: "Contact" },
 ];
