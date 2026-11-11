@@ -15,10 +15,10 @@ export const HERO_LINE = [
 ] as const;
 
 export const STATS = [
-  { value: 2016, prefix: "Since ", suffix: "", label: "Operating" },
-  { value: 65, prefix: "", suffix: "+", label: "Projects completed" },
-  { value: 65, prefix: "", suffix: "+", label: "Industries served" },
-  { value: 200, prefix: "", suffix: "+", label: "Happy users worldwide" },
+  { value: 2021, prefix: "Since ", suffix: "", label: "Operating" },
+  { value: 40, prefix: "", suffix: "+", label: "Projects" },
+  { value: 10, prefix: "", suffix: "+", label: "Industries served" },
+  { value: 100, prefix: "", suffix: "+", label: "Happy clients" },
 ];
 
 export const VALUES = [

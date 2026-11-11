@@ -331,7 +331,7 @@ html.lenis body {
 
 /* ---------- Hero ---------- */
 /* Nav steps aside while the hero intro plays (Hero toggles html[data-intro]). */
-html[data-intro] .site-header {
+html[data-intro] .site-header:not(.nav-up) {
   opacity: 0;
   transform: translateY(-16px);
   pointer-events: none;

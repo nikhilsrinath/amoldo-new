@@ -1,6 +1,7 @@
 import SmoothScroll from "@/components/shell/SmoothScroll";
 import Nav from "@/components/shell/Nav";
 import MobileCTA from "@/components/shell/MobileCTA";
+import BackToTop from "@/components/shell/BackToTop";
 import ThemeFlow from "@/components/shell/ThemeFlow";
 import { BookingProvider } from "@/components/shell/Booking";
 import Hero from "@/components/sections/Hero";
@@ -36,6 +37,7 @@ export default function HomePage() {
       </main>
       <ThemeFlow />
       <MobileCTA />
+      <BackToTop />
     </BookingProvider>
   );
 }

@@ -22,7 +22,7 @@ export const metadata: Metadata = {
   ...(SITE_URL && { metadataBase: new URL(SITE_URL), alternates: { canonical: SITE_URL } }),
   title: "Amoldo Technologies — Digital Marketing & Brand Growth Company | Chennai",
   description:
-    "Building stronger brands. Creating digital demand. Driving measurable growth. Amoldo Technologies is a Chennai-based digital marketing and brand growth company operating since 2016.",
+    "Building stronger brands. Creating digital demand. Driving measurable growth. Amoldo Technologies is a Chennai-based digital marketing and brand growth company operating since 2021.",
   keywords: [
     "Amoldo Technologies",
     "Digital Marketing Chennai",
@@ -36,7 +36,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Amoldo Technologies — Building Stronger Brands & Digital Demand",
     description:
-      "Chennai-based digital marketing and brand growth company since 2016. Strategy, SEO, SEM, social media, content, creative communication and ORM.",
+      "Chennai-based digital marketing and brand growth company since 2021. Strategy, SEO, SEM, social media, content, creative communication and ORM.",
     ...(SITE_URL && { url: SITE_URL }),
     siteName: "Amoldo Technologies",
     locale: "en_IN",
@@ -54,7 +54,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Amoldo Technologies — Digital Marketing & Brand Growth",
     description:
-      "Building stronger brands. Creating digital demand. Driving measurable growth. Operating from Chennai since 2016.",
+      "Building stronger brands. Creating digital demand. Driving measurable growth. Operating from Chennai since 2021.",
     images: ["/brand/amoldo-icon-512.png"],
   },
 };
@@ -70,7 +70,7 @@ const jsonLd = {
         logo: `${SITE_URL}/brand/amoldo-logo-black.svg`,
       }),
       name: "Amoldo Technologies",
-      foundingDate: "2016",
+      foundingDate: "2021",
       description:
         "Chennai-based digital marketing and brand growth company helping businesses strengthen market positioning, reach the right audiences, build credibility and turn digital attention into business opportunities.",
       slogan:
@@ -92,7 +92,7 @@ const jsonLd = {
       }),
       name: "Amoldo Technologies",
       email: CONTACT.email,
-      foundingDate: "2016",
+      foundingDate: "2021",
       address: {
         "@type": "PostalAddress",
         addressLocality: "Chennai",

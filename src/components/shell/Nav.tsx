@@ -6,10 +6,19 @@ import { AssessLink } from "./Booking";
 
 export default function Nav() {
   const [scrolled, setScrolled] = useState(false);
+  const [up, setUp] = useState(false);
   const [menu, setMenu] = useState(false);
 
   useEffect(() => {
-    const on = () => setScrolled(window.scrollY > 40);
+    let last = window.scrollY;
+    const on = () => {
+      const y = window.scrollY;
+      setScrolled(y > 40);
+      // Scrolling up always brings the bar back, even inside the hero intro.
+      if (y < last - 2) setUp(true);
+      else if (y > last + 2) setUp(false);
+      last = y;
+    };
     on();
     window.addEventListener("scroll", on, { passive: true });
     return () => window.removeEventListener("scroll", on);
@@ -20,7 +29,7 @@ export default function Nav() {
       data-theme-follow
       className={`site-header fixed inset-x-0 top-0 z-50 transition-[background,backdrop-filter,border-color,opacity,transform] duration-500 ${
         scrolled ? "border-b border-white/5 bg-bg/70 backdrop-blur-xl" : "border-b border-transparent"
-      }`}
+      } ${up || menu ? "nav-up" : ""}`}
     >
       <nav aria-label="Main" className="mx-auto flex h-16 max-w-[1400px] items-center justify-between px-4 sm:h-20 sm:px-8 lg:grid lg:grid-cols-[1fr_auto_1fr]">
         <a href="#top" aria-label="Amoldo Technologies — home" className="shrink-0 justify-self-start">

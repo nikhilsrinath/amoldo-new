@@ -86,7 +86,7 @@ export default function Contact() {
               </li>
             ))}
           </ul>
-          <p className="hud text-muted">© Amoldo Technologies. Since 2016.</p>
+          <p className="hud text-muted">© Amoldo Technologies. Since 2021.</p>
         </div>
       </footer>
     </section>
